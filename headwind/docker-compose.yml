@@ -30,18 +30,18 @@ services:
       BASE_DOMAIN: abexacloud.com
     volumes:
       # Frontend estático
-      - ../server/src/main/webapp/app:/usr/local/tomcat/webapps/ROOT/app:cached
-      - ../server/src/main/webapp/css:/usr/local/tomcat/webapps/ROOT/css:cached
-      - ../server/src/main/webapp/images:/usr/local/tomcat/webapps/ROOT/images:cached
-      - ../server/src/main/webapp/localization:/usr/local/tomcat/webapps/ROOT/localization:cached
-      - ../server/src/main/webapp/index.html:/usr/local/tomcat/webapps/ROOT/index.html:cached
-      - ../server/src/main/webapp/test.html:/usr/local/tomcat/webapps/ROOT/test.html:cached
-      - ../server/src/main/webapp/robots.txt:/usr/local/tomcat/webapps/ROOT/robots.txt:cached
-      # AGREGAR ESTOS:
-      - ../server/src/main/webapp/lib:/usr/local/tomcat/webapps/ROOT/lib:cached
-      - ../server/src/main/webapp/ext:/usr/local/tomcat/webapps/ROOT/ext:cached
-      # Configuración de Tomcat (IMPORTANTE)
-#      - ./context.xml:/usr/local/tomcat/conf/Catalina/localhost/ROOT.xml:ro
+#      - ../server/src/main/webapp/app:/usr/local/tomcat/webapps/ROOT/app:cached
+#      - ../server/src/main/webapp/css:/usr/local/tomcat/webapps/ROOT/css:cached
+#      - ../server/src/main/webapp/images:/usr/local/tomcat/webapps/ROOT/images:cached
+#      - ../server/src/main/webapp/localization:/usr/local/tomcat/webapps/ROOT/localization:cached
+#      - ../server/src/main/webapp/index.html:/usr/local/tomcat/webapps/ROOT/index.html:cached
+#      - ../server/src/main/webapp/test.html:/usr/local/tomcat/webapps/ROOT/test.html:cached
+#      - ../server/src/main/webapp/robots.txt:/usr/local/tomcat/webapps/ROOT/robots.txt:cached
+#      # AGREGAR ESTOS:
+#      - ../server/src/main/webapp/lib:/usr/local/tomcat/webapps/ROOT/lib:cached
+#      - ../server/src/main/webapp/ext:/usr/local/tomcat/webapps/ROOT/ext:cached
+#      # Configuración de Tomcat (IMPORTANTE)
+##      - ./context.xml:/usr/local/tomcat/conf/Catalina/localhost/ROOT.xml:ro
 
       #      - ../server/src/main/webapp:/usr/local/tomcat/webapps/ROOT:consistent
       - ./certs/letsencrypt/live/abexacloud.com:/etc/letsencrypt/live/abexacloud.com:ro
