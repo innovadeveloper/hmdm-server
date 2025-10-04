@@ -64,8 +64,8 @@
                     <div class="device-screen">
                         <!-- You can add your visual content here -->
                         <div class="device-content">
-                            <div class="time-display" id="live-clock">
-                                <span class="hours-minutes">00:00</span><span class="seconds">:00</span>
+                            <div class="time-display" id="live-clock" ng-controller="ClockController">
+                                <span class="hours-minutes">{{currentTime.hoursMinutes}}</span><span class="seconds">{{currentTime.seconds}}</span>
                             </div>
                             <div class="device-bg"></div>
                         </div>
@@ -76,42 +76,6 @@
     </div>
 </div>
 
-<script>
-(function() {
-    function updateClock() {
-        const now = new Date();
-        const hours = String(now.getHours()).padStart(2, '0');
-        const minutes = String(now.getMinutes()).padStart(2, '0');
-        const seconds = String(now.getSeconds()).padStart(2, '0');
-        
-        const clockElement = document.getElementById('live-clock');
-        if (clockElement) {
-            const hoursMinutesElement = clockElement.querySelector('.hours-minutes');
-            const secondsElement = clockElement.querySelector('.seconds');
-            
-            if (hoursMinutesElement && secondsElement) {
-                hoursMinutesElement.textContent = hours + ':' + minutes;
-                secondsElement.textContent = ':' + seconds;
-            }
-        }
-    }
-    
-    function initClock() {
-        // Update immediately
-        updateClock();
-        
-        // Update every second
-        setInterval(updateClock, 1000);
-    }
-    
-    // Wait for DOM to be ready
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initClock);
-    } else {
-        initClock();
-    }
-})();
-</script>
 
 <div class='content-wrapper width-1000' ng-if="isIE">
     <div localized>ie.browser.notice.1</div>
@@ -121,3 +85,4 @@
 <div class="login-footer" ng-if="rebranding">
     <span>{{rebranding.appName}}</span> <span localized>app.description</span>. (c) {{rebranding.year}} <a href="{{rebranding.vendorLink}}">{{rebranding.vendorName}}</a>
 </div>
+
