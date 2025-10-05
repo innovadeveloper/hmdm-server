@@ -18,14 +18,34 @@
 
         <div class='form-group'>
             <div class="col-sm-5 margin-bottom">
-                <select class='form-control' ng-model='selection.groupId' ng-change='initSearch()'
-                    ng-options="group.id as group.name for group in groups">
-                </select>
+                <div class="btn-group dropdown w-100" uib-dropdown>
+                    <button id="groupId-dropdown-button" uib-dropdown-toggle type="button"
+                        class="btn btn-default dropdown-toggle form-control text-left">
+                        <span>{{getSelectedGroupName() || 'Select Group'}}</span>
+                        <span class="caret pull-right" style="margin-top: 8px;"></span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-form w-100" uib-dropdown-menu role="menu"
+                        aria-labelledby="groupId-dropdown-button">
+                        <li role="menuitem" ng-repeat="group in groups">
+                            <a ng-mousedown="selectGroup(group.id, group.name)" href="javascript:void(0)">{{group.name}}</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
             <div class="col-sm-4 margin-bottom">
-                <select class='form-control' ng-model='selection.configurationId' ng-change='initSearch()'
-                    ng-options="config.id as config.name for config in configurations">
-                </select>
+                <div class="btn-group dropdown w-100" uib-dropdown>
+                    <button id="configurationId-dropdown-button" uib-dropdown-toggle type="button"
+                        class="btn btn-default dropdown-toggle form-control text-left">
+                        <span>{{getSelectedConfigurationName() || 'Select Configuration'}}</span>
+                        <span class="caret pull-right" style="margin-top: 8px;"></span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-form w-100" uib-dropdown-menu role="menu"
+                        aria-labelledby="configurationId-dropdown-button">
+                        <li role="menuitem" ng-repeat="config in configurations">
+                            <a ng-mousedown="selectConfiguration(config.id, config.name)" href="javascript:void(0)">{{config.name}}</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
             <div class="col-sm-3 margin-bottom">
                 <h5 class='pointer collapse-control' ng-if="!additionalParams.enabled" style="display: inline"

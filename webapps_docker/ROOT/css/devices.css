@@ -1,5 +1,424 @@
 /* Device Styles - Devices Management Interface */
 
+/* Modern Input Styles for Device Forms */
+.form-control {
+    height: 45px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 0 15px;
+    font-size: 14px;
+    transition: border-color 0.2s ease;
+    background: white;
+    color: #333;
+    font-family: 'Poppins', sans-serif;
+}
+
+.form-control:focus {
+    border-color: #2d3748;
+    background: white;
+    box-shadow: 0 0 0 2px rgba(45, 55, 72, 0.1);
+    outline: none;
+}
+
+.form-control::placeholder {
+    color: #999;
+    font-size: 14px;
+}
+
+/* Select dropdowns with modern dropdown styling and glyphicons */
+select.form-control {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: white;
+    cursor: pointer;
+    position: relative;
+    font-weight: 500;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    padding-right: 25px;
+    overflow: visible;
+}
+
+/* Add glyphicon dropdown arrow using ::after pseudo-element for ALL selects */
+.form-group,
+.col-sm-5,
+.col-sm-4,
+.col-sm-3,
+.col-sm-2,
+.col-sm-1 {
+    position: relative;
+}
+
+/* Remove all pseudo-element based arrows to prevent duplication */
+
+/* Primary approach - background image for reliable dropdown arrow display */
+select.form-control {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='%23666' d='M4.646 7.646a.5.5 0 0 1 .708 0L8 10.293l2.646-2.647a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+    background-position: right 5px center;
+    background-repeat: no-repeat;
+    background-size: 12px;
+    background-color: white;
+    padding-right: 25px;
+    z-index: 1;
+    position: relative;
+}
+
+/* Consolidated hover state with background image and styling */
+select.form-control:hover {
+    border-color: #2d3748;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='%232d3748' d='M4.646 7.646a.5.5 0 0 1 .708 0L8 10.293l2.646-2.647a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+    background-position: right 5px center;
+    z-index: 2;
+}
+
+/* Consolidated focus state with background image and styling */
+select.form-control:focus {
+    border-color: #2d3748;
+    box-shadow: 0 0 0 2px rgba(45, 55, 72, 0.1);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='%232d3748' d='M4.646 7.646a.5.5 0 0 1 .708 0L8 10.293l2.646-2.647a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+    background-position: right 5px center;
+    z-index: 3;
+    outline: none;
+}
+
+/* Modern dropdown menu styling for select options */
+select.form-control option {
+    padding: 12px 16px;
+    background: white;
+    color: #333;
+    border: none;
+    font-weight: 400;
+    font-size: 14px;
+    transition: all 0.2s ease;
+}
+
+select.form-control option:hover {
+    background: #f7fafc;
+    color: #2d3748;
+}
+
+select.form-control option:checked {
+    background: #2d3748;
+    color: white;
+    font-weight: 500;
+}
+
+/* Device form specific select styling - Similar to dropdown actions */
+.form-horizontal select.form-control {
+    background: linear-gradient(to bottom, #ffffff 0%, #f8f9fa 100%);
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05), inset 0 1px 2px rgba(255, 255, 255, 0.8);
+    position: relative;
+    z-index: 1;
+}
+
+.form-horizontal select.form-control:hover {
+    background: linear-gradient(to bottom, #ffffff 0%, #f1f3f4 100%);
+    border-color: #2d3748;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), inset 0 1px 2px rgba(255, 255, 255, 0.8);
+    z-index: 2;
+}
+
+.form-horizontal select.form-control:focus {
+    background: white;
+    border-color: #2d3748;
+    box-shadow: 0 0 0 2px rgba(45, 55, 72, 0.1), 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 3;
+}
+
+/* Enhanced select styling to match dropdown-menu appearance */
+.form-horizontal .form-group select.form-control {
+    border-radius: 6px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    min-height: 45px;
+    display: flex;
+    align-items: center;
+}
+
+/* Enhanced form groups for better select styling */
+.form-horizontal .form-group {
+    position: relative;
+}
+
+/* Clean form-horizontal styling without pseudo-elements */
+.form-horizontal .form-group select.form-control {
+    position: relative;
+}
+
+/* Layout fixes to prevent dropdown displacement */
+.form-horizontal .form-group {
+    overflow: visible;
+    z-index: 1;
+}
+
+.form-horizontal .form-group:focus-within {
+    z-index: 10;
+}
+
+/* Prevent layout shift on dropdown open */
+.form-horizontal .col-sm-5,
+.form-horizontal .col-sm-4,
+.form-horizontal .col-sm-3,
+.form-horizontal .col-sm-2,
+.form-horizontal .col-sm-1 {
+    position: relative;
+    z-index: 1;
+}
+
+.form-horizontal .col-sm-5:focus-within,
+.form-horizontal .col-sm-4:focus-within,
+.form-horizontal .col-sm-3:focus-within,
+.form-horizontal .col-sm-2:focus-within,
+.form-horizontal .col-sm-1:focus-within {
+    z-index: 10;
+}
+
+/* Custom styling for specific selects in device form */
+.form-horizontal select[ng-model*="groupId"],
+.form-horizontal select[ng-model*="configurationId"],
+.form-horizontal select[ng-model*="installationStatus"],
+.form-horizontal select[ng-model*="onlineOrOffline"],
+.form-horizontal select[ng-model*="onlineTimeSelect"],
+.form-horizontal select[ng-model*="mdmMode"],
+.form-horizontal select[ng-model*="kioskMode"] {
+    background: #fff;
+    border: 1px solid #e1e5e9;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+    font-weight: 500;
+    color: #495057;
+    transition: all 0.15s ease-in-out;
+}
+
+.form-horizontal select[ng-model*="groupId"]:hover,
+.form-horizontal select[ng-model*="configurationId"]:hover,
+.form-horizontal select[ng-model*="installationStatus"]:hover,
+.form-horizontal select[ng-model*="onlineOrOffline"]:hover,
+.form-horizontal select[ng-model*="onlineTimeSelect"]:hover,
+.form-horizontal select[ng-model*="mdmMode"]:hover,
+.form-horizontal select[ng-model*="kioskMode"]:hover {
+    border-color: #2d3748;
+    box-shadow: 0 4px 8px rgba(45, 55, 72, 0.15);
+    transform: translateY(-1px);
+}
+
+.form-horizontal select[ng-model*="groupId"]:focus,
+.form-horizontal select[ng-model*="configurationId"]:focus,
+.form-horizontal select[ng-model*="installationStatus"]:focus,
+.form-horizontal select[ng-model*="onlineOrOffline"]:focus,
+.form-horizontal select[ng-model*="onlineTimeSelect"]:focus,
+.form-horizontal select[ng-model*="mdmMode"]:focus,
+.form-horizontal select[ng-model*="kioskMode"]:focus {
+    border-color: #2d3748;
+    box-shadow: 0 0 0 0.2rem rgba(45, 55, 72, 0.25), 0 4px 8px rgba(45, 55, 72, 0.15);
+    outline: none;
+}
+
+/* Input groups and search fields */
+input[type="text"].form-control,
+input[type="number"].form-control,
+input[type="email"].form-control,
+input[type="password"].form-control {
+    height: 45px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 0 15px;
+    font-size: 14px;
+    transition: all 0.2s ease;
+    background: white;
+    color: #333;
+}
+
+input[type="text"].form-control:focus,
+input[type="number"].form-control:focus,
+input[type="email"].form-control:focus,
+input[type="password"].form-control:focus {
+    border-color: #2d3748;
+    box-shadow: 0 0 0 2px rgba(45, 55, 72, 0.1);
+    outline: none;
+}
+
+/* Date picker inputs - Enhanced width and styling */
+.date-picker-input .form-control {
+    border-radius: 5px 0 0 5px;
+    min-width: 180px;
+    width: 180px;
+}
+
+/* Wider date picker containers */
+.col-sm-2.margin-bottom .date-picker-input {
+    width: 100%;
+}
+
+.col-sm-2.margin-bottom .date-picker-input .form-control {
+    width: 100%;
+    min-width: 160px;
+}
+
+/* Enhanced date picker button */
+.date-picker-button .btn {
+    border: 1px solid #ddd;
+    border-left: none;
+    border-radius: 0 5px 5px 0;
+    background: #f8f9fa;
+    color: #666;
+    transition: all 0.2s ease;
+    min-height: 45px;
+    padding: 12px 15px;
+}
+
+.date-picker-button .btn:hover {
+    background: #e9ecef;
+    border-color: #2d3748;
+    color: #2d3748;
+}
+
+.date-picker-button .btn .glyphicon {
+    font-size: 16px;
+}
+
+/* Status dropdown and launcher version input - wider */
+input[ng-model*="launcherVersion"].form-control {
+    min-width: 200px;
+    width: 100%;
+}
+
+/* Online status and time selects - enhanced width */
+select[ng-model*="onlineOrOffline"].form-control,
+select[ng-model*="onlineTimeSelect"].form-control {
+    min-width: 180px;
+    width: 100%;
+}
+
+/* Custom time input for online status */
+input[ng-model*="onlineTimeEnter"].form-control {
+    min-width: 120px;
+    width: 100%;
+}
+
+/* Enhanced Android version input */
+input[ng-model*="androidVersion"].form-control {
+    min-width: 200px;
+    width: 100%;
+}
+
+/* Custom styled dropdown for form elements */
+.dropdown-menu-form {
+    background: white;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    margin-top: 2px;
+    padding: 8px 0;
+    min-width: 100%;
+    max-height: 300px;
+    overflow-y: auto;
+    z-index: 1050;
+}
+
+.dropdown-menu-form > li > a {
+    color: #4a5568;
+    padding: 12px 20px;
+    font-size: 14px;
+    font-weight: 400;
+    transition: all 0.2s ease;
+    border-left: 3px solid transparent;
+    text-decoration: none;
+    display: block;
+    white-space: nowrap;
+}
+
+.dropdown-menu-form > li > a:hover {
+    background: #f7fafc;
+    color: #2d3748;
+    border-left-color: #2d3748;
+    transform: translateX(4px);
+    text-decoration: none;
+}
+
+.dropdown-menu-form > li > a:focus {
+    background: #f7fafc;
+    color: #2d3748;
+    text-decoration: none;
+    outline: none;
+}
+
+/* Custom dropdown button styling */
+.btn-group.dropdown .btn.dropdown-toggle.form-control {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: left;
+    font-weight: 400;
+    color: #333;
+    padding: 12px 15px;
+    height: 45px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.2s ease;
+    font-family: 'Poppins', sans-serif;
+}
+
+.btn-group.dropdown .btn.dropdown-toggle.form-control:hover {
+    border-color: #2d3748;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background: white;
+    color: #333;
+}
+
+.btn-group.dropdown .btn.dropdown-toggle.form-control:focus {
+    border-color: #2d3748;
+    box-shadow: 0 0 0 2px rgba(45, 55, 72, 0.1);
+    background: white;
+    color: #333;
+    outline: none;
+}
+
+.btn-group.dropdown .btn.dropdown-toggle.form-control .caret {
+    border-top-color: #666;
+    transition: all 0.2s ease;
+}
+
+.btn-group.dropdown .btn.dropdown-toggle.form-control:hover .caret,
+.btn-group.dropdown .btn.dropdown-toggle.form-control:focus .caret {
+    border-top-color: #2d3748;
+}
+
+/* Width utilities for dropdown */
+.w-100 {
+    width: 100% !important;
+}
+
+/* Search button styling */
+.btn-default {
+    background: #2d3748;
+    color: white;
+    border: 1px solid #2d3748;
+    border-radius: 5px;
+    padding: 12px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    font-family: 'Poppins', sans-serif;
+}
+
+.btn-default:hover {
+    background: #1a202c;
+    border-color: #1a202c;
+    color: white;
+    transform: translateY(-1px);
+}
+
+.btn-default:focus {
+    background: #2d3748;
+    border-color: #2d3748;
+    color: white;
+    box-shadow: 0 0 0 2px rgba(45, 55, 72, 0.2);
+}
+
 /* Device Search and Layout */
 .device-search-group {
     width: 150px;
@@ -440,6 +859,7 @@
 
 .modern-device-table thead th.pointer:hover {
     background: #4a5568 !important;
+    /* background: #ed0000 !important; */
 }
 
 .modern-device-table thead th .glyphicon {

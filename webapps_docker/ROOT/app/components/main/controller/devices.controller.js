@@ -167,12 +167,56 @@ angular.module('headwind-kiosk')
         groupService.getAllGroups(function (response) {
             $scope.groups = response.data;
             $scope.groups.unshift({id: -1, name: localization.localize('devices.group.options.all')});
+            console.log('Loaded groups:', $scope.groups);
         });
+
+        $scope.getSelectedGroupName = function() {
+            if (!$scope.groups || $scope.groups.length === 0) {
+                return 'Loading...';
+            }
+
+            if ($scope.selection.groupId !== null && $scope.selection.groupId !== undefined) {
+                var selectedGroup = $scope.groups.find(function(group) {
+                    return group.id == $scope.selection.groupId;
+                });
+                // console.log('Current groupId:', $scope.selection.groupId, 'Found group:', selectedGroup);
+                return selectedGroup ? selectedGroup.name : 'Select Group';
+            }
+            return 'Select Group';
+        };
+
+        $scope.selectGroup = function(groupId, groupName) {
+            console.log('Selecting group:', groupId, groupName);
+            $scope.selection.groupId = groupId;
+            // $scope.$apply();
+            $scope.initSearch();
+        };
 
         configurationService.getAllConfigNames(function (response) {
             $scope.configurations = response.data;
             $scope.configurations.unshift({id: -1, name: localization.localize('devices.configuration.options.all')});
+            console.log('Loaded configurations:', $scope.configurations);
         });
+
+        $scope.getSelectedConfigurationName = function() {
+            if (!$scope.configurations || $scope.configurations.length === 0) {
+                return 'Loading...';
+            }
+
+            if ($scope.selection.configurationId !== null && $scope.selection.configurationId !== undefined) {
+                var selectedConfiguration = $scope.configurations.find(function(config) {
+                    return config.id == $scope.selection.configurationId;
+                });
+                return selectedConfiguration ? selectedConfiguration.name : 'Select Configuration';
+            }
+            return 'Select Configuration';
+        };
+
+        $scope.selectConfiguration = function(configId, configName) {
+            console.log('Selecting configuration:', configId, configName);
+            $scope.selection.configurationId = configId;
+            $scope.initSearch();
+        };
 
         var loadCommonSettings = function(completion) {
             settingsService.getSettings({}, function(response) {
