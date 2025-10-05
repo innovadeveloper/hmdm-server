@@ -48,14 +48,16 @@
                 </div>
             </div>
             <div class="col-sm-3 margin-bottom">
-                <h5 class='pointer collapse-control' ng-if="!additionalParams.enabled" style="display: inline"
-                    ng-click="toggleAdditionalParams()" localized>form.devices.label.params.more</h5>
-                <h5 class='pointer collapse-control' ng-if="additionalParams.enabled" style="display: inline"
-                    ng-click="toggleAdditionalParams()" localized>form.devices.label.params.less</h5>
-                <span class='pointer glyphicon'
-                    ng-class="{'glyphicon-chevron-down': !additionalParams.enabled, 'glyphicon-chevron-up': additionalParams.enabled}"
-                    ng-click="toggleAdditionalParams()">
-                </span>
+                <div class="collapse-control-container">
+                    <h5 class='pointer collapse-control' ng-click="toggleAdditionalParams()">
+                        <span ng-show="!additionalParams.enabled" localized>form.devices.label.params.more</span>
+                        <span ng-show="additionalParams.enabled" localized>form.devices.label.params.less</span>
+                    </h5>
+                    <span class='pointer glyphicon collapse-control-icon'
+                        ng-class="{'glyphicon-chevron-down': !additionalParams.enabled, 'glyphicon-chevron-up': additionalParams.enabled}"
+                        ng-click="toggleAdditionalParams()">
+                    </span>
+                </div>
             </div>
         </div>
 
@@ -92,8 +94,11 @@
             </div>
 
             <div class="col-sm-2  margin-bottom" style="margin-top: 5px">
-                <input type="checkbox" id="addParamsImeiChanged" ng-model='additionalParams.imeiChanged'> <span
-                    localized>form.devices.selection.imei.changed</span>
+                <label for="addParamsImeiChanged" class="custom-checkbox">
+                    <input type="checkbox" id="addParamsImeiChanged" ng-model='additionalParams.imeiChanged'>
+                    <span class="checkmark"></span>
+                    <span class="checkbox-label" localized>form.devices.selection.imei.changed</span>
+                </label>
             </div>
 
             <div class="col-sm-2  margin-bottom">
@@ -209,9 +214,11 @@
                 <button type='button' class='btn btn-default' style="float: left" ng-click='initSearch()'
                     localized>button.search</button>
 
-                <input type="checkbox" ng-model='searchParams.fastSearch'
-                    style="float: left; margin: 10px 10px 10px 30px">
-                <span style="float: left; margin: 7px 0 0 0" localized>form.devices.fast.search</span>
+                <label class="custom-checkbox" style="float: left; margin: 10px 10px 10px 30px">
+                    <input type="checkbox" ng-model='searchParams.fastSearch'>
+                    <span class="checkmark"></span>
+                    <span class="checkbox-label" localized>form.devices.fast.search</span>
+                </label>
 
                 <div class="btn-group dropdown" uib-dropdown ng-if="hasPermission('edit_devices')">
                     <button id="group-actions-button" type="button" class="btn btn-default dropdown-toggle"

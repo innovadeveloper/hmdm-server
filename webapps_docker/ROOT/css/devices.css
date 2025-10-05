@@ -1243,3 +1243,130 @@ div.row.device-app-settings-wrapper{
         height: 32px;
     }
 }
+
+/* Modern Checkbox Styling */
+.custom-checkbox {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: #4a5568;
+    margin: 0;
+    padding: 8px 0;
+}
+
+.custom-checkbox input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.custom-checkbox .checkmark {
+    position: relative;
+    height: 20px;
+    width: 20px;
+    background-color: white;
+    border: 2px solid #2d3748;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.custom-checkbox:hover .checkmark {
+    border-color: #2d3748;
+    box-shadow: 0 0 0 3px rgba(45, 55, 72, 0.1);
+}
+
+.custom-checkbox input[type="checkbox"]:checked ~ .checkmark {
+    background-color: #2d3748;
+    border-color: #2d3748;
+}
+
+.custom-checkbox input[type="checkbox"]:checked ~ .checkmark::after {
+    content: '';
+    position: absolute;
+    display: block;
+    left: 6px;
+    top: 2px;
+    width: 6px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.custom-checkbox input[type="checkbox"]:focus ~ .checkmark {
+    outline: 2px solid #2d3748;
+    outline-offset: 2px;
+}
+
+.custom-checkbox .checkbox-label {
+    user-select: none;
+    line-height: 1.4;
+    margin: 0;
+}
+
+/* Responsive checkbox for smaller screens */
+@media (max-width: 768px) {
+    .custom-checkbox {
+        font-size: 13px;
+        gap: 10px;
+    }
+
+    .custom-checkbox .checkmark {
+        height: 18px;
+        width: 18px;
+    }
+
+    .custom-checkbox input[type="checkbox"]:checked ~ .checkmark::after {
+        left: 5px;
+        top: 1px;
+        width: 5px;
+        height: 9px;
+    }
+}
+
+/* Vertical centering for collapse control */
+.collapse-control-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 42px;
+}
+
+.collapse-control {
+    margin: 0 !important;
+    display: inline-flex;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    color: #2d3748;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.collapse-control:hover {
+    color: #4299e1;
+}
+
+.collapse-control-icon {
+    font-size: 14px;
+    color: #2d3748;
+    cursor: pointer;
+    transition: color 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+}
+
+.collapse-control-icon:hover {
+    color: #4299e1;
+}
