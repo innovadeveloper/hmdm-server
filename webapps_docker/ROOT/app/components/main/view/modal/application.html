@@ -11,14 +11,19 @@
         <div class='form-group'>
             <label class='col-sm-4 control-label' for="applicationType" localized>form.application.type</label>
             <div class='col-sm-8'>
-                <select class="form-control" ng-model='application.type' id="applicationType" ng-disabled="!isNewApp">
-                    <option ng-value="'app'" ng-selected="application.type === 'app'"
-                            localized>form.application.type.option.app</option>
-                    <option ng-value="'web'" ng-selected="application.type === 'web'"
-                            localized>form.application.type.option.web</option>
-                    <option ng-value="'intent'" ng-selected="application.type === 'intent'"
-                            localized>form.application.type.option.intent</option>
-                </select>
+                <div class="btn-group dropdown w-100" uib-dropdown>
+                    <button id="applicationType-dropdown-button" uib-dropdown-toggle type="button"
+                        class="btn btn-default dropdown-toggle form-control text-left" ng-disabled="!isNewApp">
+                        <span>{{getSelectedApplicationTypeName()}}</span>
+                        <span class="caret pull-right" style="margin-top: 8px;"></span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-form w-100" uib-dropdown-menu role="menu"
+                        aria-labelledby="applicationType-dropdown-button">
+                        <li role="menuitem" ng-repeat="type in applicationTypeOptions">
+                            <a ng-mousedown="selectApplicationType(type.id, type.name)" href="javascript:void(0)">{{type.name}}</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
 
@@ -66,14 +71,19 @@
         <div class='form-group' ng-if="application.type === 'app'">
             <label class='col-sm-4 control-label' for="applicationArch" localized>form.application.arch</label>
             <div class='col-sm-8'>
-                <select class="form-control" ng-model='application.arch' id="applicationArch" ng-if="!application.id">
-                    <option ng-value="''" ng-selected="application.arch === null || application.arch === ''"
-                            localized>form.application.arch.universal</option>
-                    <option ng-value="'armeabi'" ng-selected="application.arch === 'armeabi'"
-                            localized>form.application.arch.armeabi</option>
-                    <option ng-value="'arm64'" ng-selected="application.arch === 'arm64'"
-                            localized>form.application.arch.arm64</option>
-                </select>
+                <div class="btn-group dropdown w-100" uib-dropdown ng-if="!application.id">
+                    <button id="applicationArch-dropdown-button" uib-dropdown-toggle type="button"
+                        class="btn btn-default dropdown-toggle form-control text-left">
+                        <span>{{getSelectedApplicationArchName()}}</span>
+                        <span class="caret pull-right" style="margin-top: 8px;"></span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-form w-100" uib-dropdown-menu role="menu"
+                        aria-labelledby="applicationArch-dropdown-button">
+                        <li role="menuitem" ng-repeat="arch in applicationArchOptions">
+                            <a ng-mousedown="selectApplicationArch(arch.id, arch.name)" href="javascript:void(0)">{{arch.name}}</a>
+                        </li>
+                    </ul>
+                </div>
                 <div class="field-hint warning-font" ng-show="appTypeWarning">{{appTypeWarning}}</div>
                 <div class="field-hint success-font" ng-show="appTypeSuccess">{{appTypeSuccess}}</div>
                 <input ng-if="application.id"
@@ -192,9 +202,19 @@
         <div class='form-group' ng-if="application.showIcon">
             <label class='col-sm-4 control-label' for="iconInput" localized>form.application.icon</label>
             <div class='col-sm-5'>
-                <select ng-options="icon.id as icon.name for icon in icons" name="icon"
-                        ng-model='application.iconId' class='form-control' id="iconInput">
-                </select>
+                <div class="btn-group dropdown w-100" uib-dropdown>
+                    <button id="iconInput-dropdown-button" uib-dropdown-toggle type="button"
+                        class="btn btn-default dropdown-toggle form-control text-left">
+                        <span>{{getSelectedIconName()}}</span>
+                        <span class="caret pull-right" style="margin-top: 8px;"></span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-form w-100" uib-dropdown-menu role="menu"
+                        aria-labelledby="iconInput-dropdown-button">
+                        <li role="menuitem" ng-repeat="icon in icons">
+                            <a ng-mousedown="selectIcon(icon.id, icon.name)" href="javascript:void(0)">{{icon.name}}</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
             <dic class="col-sm-3 align-right">
                 <button class="btn btn-default" type="button" ng-click="addNewIcon()" localized>button.add.icon</button>

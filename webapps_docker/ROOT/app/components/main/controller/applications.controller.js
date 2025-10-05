@@ -659,6 +659,62 @@ angular.module('headwind-kiosk')
             });
         };
 
+        // Application Type dropdown functions
+        $scope.applicationTypeOptions = [
+            {id: 'app', name: localization.localize('form.application.type.option.app')},
+            {id: 'web', name: localization.localize('form.application.type.option.web')},
+            {id: 'intent', name: localization.localize('form.application.type.option.intent')}
+        ];
+
+        $scope.getSelectedApplicationTypeName = function() {
+            if ($scope.application.type) {
+                var selectedType = $scope.applicationTypeOptions.find(function(type) {
+                    return type.id === $scope.application.type;
+                });
+                return selectedType ? selectedType.name : 'Select Type';
+            }
+            return 'Select Type';
+        };
+
+        $scope.selectApplicationType = function(typeId, typeName) {
+            $scope.application.type = typeId;
+        };
+
+        // Application Architecture dropdown functions
+        $scope.applicationArchOptions = [
+            {id: '', name: localization.localize('form.application.arch.universal')},
+            {id: 'armeabi', name: localization.localize('form.application.arch.armeabi')},
+            {id: 'arm64', name: localization.localize('form.application.arch.arm64')}
+        ];
+
+        $scope.getSelectedApplicationArchName = function() {
+            if ($scope.application.arch !== null && $scope.application.arch !== undefined) {
+                var selectedArch = $scope.applicationArchOptions.find(function(arch) {
+                    return arch.id === $scope.application.arch;
+                });
+                return selectedArch ? selectedArch.name : localization.localize('form.application.arch.universal');
+            }
+            return localization.localize('form.application.arch.universal');
+        };
+
+        $scope.selectApplicationArch = function(archId, archName) {
+            $scope.application.arch = archId;
+        };
+
+        // Application Icon dropdown functions
+        $scope.getSelectedIconName = function() {
+            if ($scope.application.iconId !== null && $scope.application.iconId !== undefined && $scope.icons) {
+                var selectedIcon = $scope.icons.find(function(icon) {
+                    return icon.id == $scope.application.iconId;
+                });
+                return selectedIcon ? selectedIcon.name : localization.localize("form.application.icon.default");
+            }
+            return localization.localize("form.application.icon.default");
+        };
+
+        $scope.selectIcon = function(iconId, iconName) {
+            $scope.application.iconId = iconId;
+        };
 
         $scope.closeModal = function () {
             $modalInstance.dismiss();

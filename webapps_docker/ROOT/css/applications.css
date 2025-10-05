@@ -1,0 +1,468 @@
+/* Applications View Styles */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+/* General Applications Container */
+.applications-container {
+    font-family: 'Poppins', sans-serif;
+    padding: 20px;
+    background: #f8fafc;
+    min-height: calc(100vh - 130px);
+}
+
+/* Modern Form Styles */
+.applications-form {
+    background: white;
+    border-radius: 12px;
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e5e7eb;
+}
+
+/* Search Input Styling */
+.applications-search-input {
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    color: #2d3748;
+    transition: all 0.2s ease;
+    background: white;
+}
+
+.applications-search-input:focus {
+    outline: none;
+    border-color: #2d3748;
+    box-shadow: 0 0 0 3px rgba(45, 55, 72, 0.1);
+}
+
+.applications-search-input::placeholder {
+    color: #a0aec0;
+    font-weight: 400;
+}
+
+/* Add Button Styling */
+.applications-add-btn {
+    background: #2d3748;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 24px;
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.applications-add-btn:hover {
+    background: #1a202c;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(45, 55, 72, 0.3);
+    color: white;
+}
+
+/* Checkbox Container */
+.applications-checkbox-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin: 20px 0;
+    flex-wrap: wrap;
+}
+
+.applications-checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Custom Checkbox Styling for Applications */
+.applications-checkbox {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: #4a5568;
+    margin: 0;
+}
+
+.applications-checkbox input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.applications-checkbox .checkmark {
+    position: relative;
+    height: 18px;
+    width: 18px;
+    background-color: white;
+    border: 2px solid #2d3748;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.applications-checkbox:hover .checkmark {
+    border-color: #2d3748;
+    box-shadow: 0 0 0 3px rgba(45, 55, 72, 0.1);
+}
+
+.applications-checkbox input[type="checkbox"]:checked ~ .checkmark {
+    background-color: #2d3748;
+    border-color: #2d3748;
+}
+
+.applications-checkbox input[type="checkbox"]:checked ~ .checkmark::after {
+    content: '';
+    position: absolute;
+    display: block;
+    left: 5px;
+    top: 1px;
+    width: 5px;
+    height: 9px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.applications-checkbox .checkbox-label {
+    user-select: none;
+    line-height: 1.4;
+    margin: 0;
+    font-weight: 500;
+    color: #2d3748;
+}
+
+/* Field Hint Styling */
+.applications-field-hint {
+    background: #e6fffa;
+    color: #38b2ac;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    border-left: 4px solid #38b2ac;
+}
+
+/* Modern Applications Table */
+.applications-table {
+    font-family: 'Poppins', sans-serif;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e5e7eb;
+    margin-bottom: 30px;
+    border-collapse: separate;
+    border-spacing: 0;
+    width: 100%;
+}
+
+.applications-table thead {
+    background: #2d3748;
+}
+
+.applications-table thead th {
+    background: #2d3748 !important;
+    color: white !important;
+    font-weight: 500;
+    font-size: 13px;
+    padding: 20px 16px;
+    border: none;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    position: relative;
+    font-family: 'Poppins', sans-serif;
+}
+
+.applications-table thead th:first-child {
+    border-top-left-radius: 12px;
+}
+
+.applications-table thead th:last-child {
+    border-top-right-radius: 12px;
+}
+
+.applications-table tbody tr {
+    transition: all 0.2s ease;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.applications-table tbody tr:hover {
+    background: #f8fafc;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.applications-table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.applications-table tbody td {
+    padding: 16px;
+    font-size: 14px;
+    color: #4a5568;
+    font-weight: 400;
+    border: none;
+    vertical-align: middle;
+}
+
+.applications-table tbody td:first-child {
+    font-weight: 500;
+    color: #2d3748;
+}
+
+/* Application Actions */
+.application-actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.application-action-btn {
+    width: 38px;
+    height: 38px;
+    border: 2px solid #e5e7eb;
+    background: white;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: #718096;
+    font-size: 14px;
+}
+
+.application-action-btn:hover {
+    border-color: #2d3748;
+    color: #2d3748;
+    background: #f8fafc;
+    transform: translateY(-1px);
+}
+
+.application-action-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.application-action-btn.edit-btn:hover {
+    border-color: #3182ce;
+    color: #3182ce;
+    background: #ebf8ff;
+}
+
+.application-action-btn.delete-btn:hover {
+    border-color: #e53e3e;
+    color: #e53e3e;
+    background: #fed7d7;
+}
+
+.application-action-btn.versions-btn:hover {
+    border-color: #38a169;
+    color: #38a169;
+    background: #f0fff4;
+}
+
+.application-action-btn.config-btn:hover {
+    border-color: #d69e2e;
+    color: #d69e2e;
+    background: #fffaf0;
+}
+
+.application-action-btn.cloud-btn:hover {
+    border-color: #805ad5;
+    color: #805ad5;
+    background: #faf5ff;
+}
+
+/* Split APK Styling */
+.column-split-apk {
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.configuration-hint {
+    font-weight: 600;
+    color: #2d3748;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.warning-font {
+    color: #e53e3e;
+    font-weight: 500;
+    font-style: italic;
+}
+
+/* Application URLs */
+.application-url {
+    color: #3182ce;
+    text-decoration: none;
+    font-weight: 400;
+    word-break: break-all;
+    font-size: 13px;
+}
+
+.application-url:hover {
+    color: #2c5282;
+    text-decoration: underline;
+}
+
+/* Pagination Wrapper */
+.applications-pagination-wrapper {
+    background: white;
+    padding: 20px 24px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e5e7eb;
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.applications-pagination .pagination {
+    margin: 0;
+}
+
+.applications-pagination .pagination > li > a,
+.applications-pagination .pagination > li > span {
+    border: 1px solid #e2e8f0;
+    color: #718096;
+    padding: 10px 14px;
+    margin: 0 3px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.applications-pagination .pagination > .active > a,
+.applications-pagination .pagination > .active > span {
+    background: #2d3748;
+    border-color: #2d3748;
+    color: white;
+}
+
+.applications-pagination .pagination > li > a:hover,
+.applications-pagination .pagination > li > span:hover {
+    background: #f7fafc;
+    border-color: #cbd5e0;
+    color: #2d3748;
+    transform: translateY(-1px);
+}
+
+/* No Results Message */
+.no-applications-message {
+    text-align: center;
+    padding: 60px 20px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e5e7eb;
+    color: #718096;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.no-applications-icon {
+    font-size: 48px;
+    color: #cbd5e0;
+    margin-bottom: 16px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .applications-container {
+        padding: 15px;
+    }
+
+    .applications-form {
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+
+    .applications-table {
+        font-size: 12px;
+    }
+
+    .applications-table thead th,
+    .applications-table tbody td {
+        padding: 12px 8px;
+    }
+
+    .application-actions {
+        gap: 4px;
+    }
+
+    .application-action-btn {
+        width: 32px;
+        height: 32px;
+        font-size: 12px;
+    }
+
+    .applications-checkbox-container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .applications-add-btn {
+        width: 100%;
+        justify-content: center;
+        margin-top: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .applications-table thead th,
+    .applications-table tbody td {
+        padding: 10px 6px;
+        font-size: 11px;
+    }
+
+    .application-action-btn {
+        width: 28px;
+        height: 28px;
+        font-size: 10px;
+    }
+
+    .applications-checkbox-group {
+        gap: 8px;
+    }
+
+    .applications-checkbox .checkmark {
+        height: 16px;
+        width: 16px;
+    }
+
+    .applications-checkbox input[type="checkbox"]:checked ~ .checkmark::after {
+        left: 4px;
+        top: 0px;
+        width: 4px;
+        height: 8px;
+    }
+}
