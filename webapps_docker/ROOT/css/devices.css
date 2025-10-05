@@ -1017,14 +1017,14 @@ input[ng-model*="androidVersion"].form-control {
 
 /* Device Configuration Link */
 .device-config-link {
-    color: #3182ce;
+    color: #2d3748;
     text-decoration: none;
     font-weight: 500;
     transition: color 0.2s ease;
 }
 
 .device-config-link:hover {
-    color: #2c5aa0;
+    color: #19202c;
     text-decoration: underline;
 }
 
@@ -1355,7 +1355,7 @@ div.row.device-app-settings-wrapper{
 }
 
 .collapse-control:hover {
-    color: #4299e1;
+    color: #0d1015;
 }
 
 .collapse-control-icon {
