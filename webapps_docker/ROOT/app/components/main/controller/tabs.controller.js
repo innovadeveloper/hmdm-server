@@ -139,6 +139,15 @@ angular.module('headwind-kiosk')
                     $scope.functionsPlugins = [];
                     $scope.settingsPlugins = [];
                 }
+
+                // After loading plugins, re-check active tab in case we're in a plugin state
+                var currentActiveTab = getActiveTabFromState();
+                if (currentActiveTab !== $scope.activeTab) {
+                    $scope.activeTab = currentActiveTab;
+                    $scope.act = {};
+                    $scope.act[currentActiveTab] = true;
+                    updateDropdownActiveStates();
+                }
             });
         };
 
@@ -169,9 +178,14 @@ angular.module('headwind-kiosk')
                 'pluginSettings': 'PLUGINS'
             };
 
-            // Check for plugin states
-            if (stateName && stateName.startsWith('plugin-')) {
-                return stateName.toUpperCase();
+            // Check for settings plugin states (plugin-settings-*)
+            if (stateName && stateName.indexOf('plugin-settings-') === 0) {
+                return 'plugin-settings-' + stateName.substring('plugin-settings-'.length);
+            }
+
+            // Check for functions plugin states (plugin-*)
+            if (stateName && stateName.indexOf('plugin-') === 0 && stateName.indexOf('plugin-settings-') !== 0) {
+                return 'plugin-' + stateName.substring('plugin-'.length);
             }
 
             return stateToTab[stateName] || 'DEVICES';
@@ -186,14 +200,12 @@ angular.module('headwind-kiosk')
         $scope.settingsPlugins = [];
 
         function updateDropdownActiveStates() {
-            $scope.settingsTabActive = ['DESIGN', 'COMMON', 'USERS', 'ROLES', 'GROUPS', 'ICONS', 'LANG', 'HINTS', 'PLUGINS'].includes($scope.activeTab) ||
-                ($scope.settingsPlugins && $scope.settingsPlugins.some(function(plugin) {
-                    return $scope.activeTab === 'plugin-settings-' + plugin.identifier;
-                }));
+            var settingsTabNames = ['DESIGN', 'COMMON', 'USERS', 'ROLES', 'GROUPS', 'ICONS', 'LANG', 'HINTS', 'PLUGINS'];
+            var isSettingsPlugin = $scope.activeTab && $scope.activeTab.indexOf('plugin-settings-') === 0;
+            var isFunctionsPlugin = $scope.activeTab && $scope.activeTab.indexOf('plugin-') === 0 && $scope.activeTab.indexOf('plugin-settings-') !== 0;
 
-            $scope.pluginsTabActive = $scope.functionsPlugins && $scope.functionsPlugins.some(function(plugin) {
-                return $scope.activeTab === 'plugin-' + plugin.identifier;
-            });
+            $scope.settingsTabActive = settingsTabNames.includes($scope.activeTab) || isSettingsPlugin;
+            $scope.pluginsTabActive = isFunctionsPlugin;
         }
 
         // Calculate active states for dropdown menus
@@ -221,7 +233,7 @@ angular.module('headwind-kiosk')
         $scope.$on('aero_PLUGINS_UPDATED', loadData);
 
         // Listen for state changes to update active tab
-        $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
+        $scope.$on('$stateChangeSuccess', function() {
             var newActiveTab = getActiveTabFromState();
             if (newActiveTab !== $scope.activeTab) {
                 $scope.activeTab = newActiveTab;
