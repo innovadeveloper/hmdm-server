@@ -2686,3 +2686,288 @@ h4.collapse-control {
         padding: 40px 30px;
     }
 }
+
+/* Modern Device Table Styles */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+.modern-device-table {
+    font-family: 'Poppins', sans-serif;
+    background: white;
+    border-radius: 8px;
+    /*overflow: hidden;*/
+    overflow: visible;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e5e7eb;
+    margin-bottom: 0;
+}
+
+.modern-device-table thead {
+    background: #2d3748;
+}
+
+.modern-device-table thead th {
+    background: #2d3748 !important;
+    color: white !important;
+    font-weight: 500;
+    font-size: 13px;
+    padding: 18px 16px;
+    border: none;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    position: relative;
+    font-family: 'Poppins', sans-serif;
+}
+
+.modern-device-table thead th.pointer:hover {
+    background: #4a5568 !important;
+}
+
+.modern-device-table thead th .glyphicon {
+    margin-left: 6px;
+    opacity: 0.9;
+}
+
+.modern-device-table tbody tr {
+    border-bottom: 1px solid #f1f5f9;
+    transition: background-color 0.2s ease;
+}
+
+.modern-device-table tbody tr:nth-child(even) {
+    background-color: #f8fafc;
+}
+
+.modern-device-table tbody tr:nth-child(odd) {
+    background-color: white;
+}
+
+.modern-device-table tbody tr:hover {
+    background-color: #f1f5f9 !important;
+}
+
+.modern-device-table tbody td {
+    padding: 16px;
+    vertical-align: middle;
+    border: none;
+    font-size: 14px;
+    color: #2d3748;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+}
+
+/* Status badges for devices */
+.device-status-active {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    background: #dcfce7;
+    color: #166534;
+    text-transform: capitalize;
+}
+
+.device-status-deactivated {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    background: #fee2e2;
+    color: #dc2626;
+    text-transform: capitalize;
+}
+
+.device-status-offline {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    background: #fef3c7;
+    color: #92400e;
+    text-transform: capitalize;
+}
+
+/* Custom checkbox styles */
+.modern-device-checkbox {
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #cbd5e0;
+    border-radius: 4px;
+    background: white;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+.modern-device-checkbox:checked {
+    background: #3182ce;
+    border-color: #3182ce;
+}
+
+.modern-device-checkbox:checked::after {
+    content: '✓';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.modern-device-checkbox:hover {
+    border-color: #a0aec0;
+}
+
+/* Action buttons styling */
+.device-actions {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.device-action-btn {
+    width: 36px;
+    height: 36px;
+    border: 1px solid #e2e8f0;
+    background: white;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    padding: 0;
+}
+
+.device-action-btn:hover {
+    background: #f7fafc;
+    border-color: #cbd5e0;
+    transform: translateY(-1px);
+}
+
+.device-action-btn .glyphicon {
+    font-size: 13px;
+    color: #718096;
+}
+
+.device-action-btn:hover .glyphicon {
+    color: #2d3748;
+}
+
+/* Device indicator improvements */
+.device-indicator {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin-top: 0;
+}
+
+/* Date formatting */
+.device-date {
+    font-size: 13px;
+    color: #718096;
+    font-weight: 400;
+}
+
+/* Improved pagination */
+.custom-pagination-wrapper {
+    background: white;
+    padding: 20px 24px;
+    border-top: 1px solid #e2e8f0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+.pagination-label {
+    color: #718096;
+    font-size: 14px;
+    padding: 0;
+    font-weight: 400;
+}
+
+.pagination-label span {
+    font-weight: 600;
+    color: #2d3748;
+    margin: 0 3px;
+}
+
+.custom-pagination .pagination {
+    margin: 0;
+}
+
+.custom-pagination .pagination > li > a,
+.custom-pagination .pagination > li > span {
+    border: 1px solid #e2e8f0;
+    color: #718096;
+    padding: 10px 14px;
+    margin: 0 3px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.custom-pagination .pagination > .active > a,
+.custom-pagination .pagination > .active > span {
+    background: #3182ce;
+    border-color: #3182ce;
+    color: white;
+}
+
+.custom-pagination .pagination > li > a:hover,
+.custom-pagination .pagination > li > span:hover {
+    background: #f7fafc;
+    border-color: #cbd5e0;
+    color: #2d3748;
+    transform: translateY(-1px);
+}
+
+/* Device configuration link styling */
+.device-config-link {
+    color: #3182ce;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.device-config-link:hover {
+    color: #2c5aa0;
+    text-decoration: underline;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .modern-device-table {
+        font-size: 12px;
+    }
+    
+    .modern-device-table thead th,
+    .modern-device-table tbody td {
+        padding: 12px 8px;
+    }
+    
+    .device-actions {
+        gap: 4px;
+    }
+    
+    .device-action-btn {
+        width: 32px;
+        height: 32px;
+    }
+    
+    .custom-pagination-wrapper {
+        padding: 16px;
+        flex-direction: column;
+        gap: 12px;
+    }
+}

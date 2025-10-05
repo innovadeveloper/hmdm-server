@@ -217,14 +217,14 @@
         </div>
     </div>
 
-    <table ng-if='devices && devices.length > 0' class='table'>
+    <table ng-if='devices && devices.length > 0' class='table modern-device-table'>
         <thead>
         <tr>
             <th ng-if="hasPermission('edit_devices')">
                 <input ng-model='selection.all'
                        ng-change='selectAll()'
                        type='checkbox'
-                       class='pointer'/>
+                       class='modern-device-checkbox'/>
             </th>
             <th ng-if="settings.columnDisplayedDeviceStatus" ng-click="sortData('STATUS')" class="pointer">
                 <span localized>table.heading.device.status</span>
@@ -356,14 +356,14 @@
             <td ng-if="hasPermission('edit_devices')">
                 <input ng-model='device.selected'
                        type='checkbox'
-                       class='pointer'>
+                       class='modern-device-checkbox'>
             </td>
             <td ng-if="settings.columnDisplayedDeviceStatus">
                 <img class='device-indicator'
                      ng-src='{{getDeviceIndicatorImage(device)}}'
                      title='{{calculateStatusText(device)}}'>
             </td>
-            <td ng-if='(device.lastUpdateDate > 0) && settings.columnDisplayedDeviceDate'>{{device.lastUpdateDate|date:dateFormat}}</td>
+            <td ng-if='(device.lastUpdateDate > 0) && settings.columnDisplayedDeviceDate' class='device-date'>{{device.lastUpdateDate|date:dateFormat}}</td>
             <td ng-if='(device.lastUpdateDate <= 0 || !device.lastUpdateDate) && settings.columnDisplayedDeviceDate' localized>devices.date.unknown</td>
             <td ng-if="settings.columnDisplayedDeviceNumber"><span>{{device.number}}</span></td>
             <td ng-if="settings.columnDisplayedDeviceImei">
@@ -389,7 +389,7 @@
                      title='{{getDeviceFilesTitle(device)}}'>
             </td>
             <td ng-if="settings.columnDisplayedDeviceConfiguration && hasPermission('configurations') && configAvailable(device.configuration)">
-                <a class="action-link" ng-click="editConfiguration(device.configuration)">{{device.configuration.name}}</a>
+                <a class="device-config-link" ng-click="editConfiguration(device.configuration)">{{device.configuration.name}}</a>
             </td>
             <td ng-if="settings.columnDisplayedDeviceConfiguration && (!hasPermission('configurations') || !configAvailable(device.configuration))">{{device.configuration.name}}
             </td>
@@ -417,7 +417,7 @@
             <td ng-if="settings.columnDisplayedAndroidVersion">
                 {{getAndroidVersion(device)}}
             </td>
-            <td ng-if='(device.enrollTime > 0) && settings.columnDisplayedEnrollmentDate'>{{device.enrollTime|date:dateFormat}}</td>
+            <td ng-if='(device.enrollTime > 0) && settings.columnDisplayedEnrollmentDate' class='device-date'>{{device.enrollTime|date:dateFormat}}</td>
             <td ng-if='(device.enrollTime <= 0 || !device.enrollTime) && settings.columnDisplayedEnrollmentDate' localized>devices.date.unknown</td>
             <td ng-if="settings.columnDisplayedSerial">
                 <span>{{getSerial(device)}}</span>
@@ -436,19 +436,19 @@
             </td>
 
             <!-- DEVICE ACTIONS -->
-            <td class="deviceActions">
-                <button type='button' class='btn btn-default' ng-click='editDevice( device )'
+            <td class="deviceActions device-actions">
+                <button type='button' class='device-action-btn' ng-click='editDevice( device )'
                         localized-title="button.change" ng-if="hasPermission('edit_devices') || hasPermission('edit_device_desc')">
                     <span class='glyphicon glyphicon-pencil'></span>
                 </button>
-                <button type='button' class='btn btn-default' localized-title="button.qrcode"
+                <button type='button' class='device-action-btn' localized-title="button.qrcode"
                         ng-if="hasPermission('enroll_devices')"
                         ng-disabled="device.configuration.qrCodeKey == null"
                         data-hint-key="hint.step.1"
                         ng-click='showQrCode(device)'>
                     <span class='glyphicon glyphicon-qrcode'></span>
                 </button>
-                <button type='button' class='btn btn-default' ng-click='removeDevice( device )'
+                <button type='button' class='device-action-btn' ng-click='removeDevice( device )'
                         localized-title="button.delete" ng-if="hasPermission('edit_devices')">
                     <span class='glyphicon glyphicon-trash'></span>
                 </button>
