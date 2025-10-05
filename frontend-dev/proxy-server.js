@@ -13,7 +13,8 @@ app.use((req, res, next) => {
 });
 
 // Ruta al directorio webapp del proyecto
-const WEBAPP_DIR = path.join(__dirname, '..', 'server', 'src', 'main', 'webapp');
+// const WEBAPP_DIR = path.join(__dirname, '..', 'server', 'src', 'main', 'webapp');
+const WEBAPP_DIR = path.join(__dirname, '..', 'webapps_docker', 'ROOT');
 
 console.log('Sirviendo archivos desde:', WEBAPP_DIR);
 
