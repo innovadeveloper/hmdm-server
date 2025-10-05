@@ -334,7 +334,7 @@
 .tabset .nav-tabs .dropdown-menu > li > a:hover {
     background: #f7fafc !important;
     color: #2d3748 !important;
-    border-left-color: #4299e1 !important;
+    border-left-color: #2d3748 !important;
     transform: translateX(4px) !important;
     text-decoration: none !important;
 }
@@ -348,7 +348,7 @@
 .tabset .nav-tabs .dropdown-menu > li.active > a {
     background: #e2e8f0 !important;
     color: #2d3748 !important;
-    border-left-color: #4299e1 !important;
+    border-left-color: #2d3748 !important;
     font-weight: 600 !important;
 }
 
@@ -373,14 +373,14 @@
 .tabset .nav-tabs .dropdown-menu > tab:hover {
     background: #f7fafc !important;
     color: #2d3748 !important;
-    border-left-color: #4299e1 !important;
+    border-left-color: #2d3748 !important;
     transform: translateX(4px) !important;
 }
 
 .tabset .nav-tabs .dropdown-menu > tab.active {
     background: #e2e8f0 !important;
     color: #2d3748 !important;
-    border-left-color: #4299e1 !important;
+    border-left-color: #2d3748 !important;
     font-weight: 600 !important;
 }
 
@@ -516,7 +516,7 @@
 .tab-dropdown-menu > li > a:hover {
     background: #f7fafc;
     color: #2d3748;
-    border-left-color: #4299e1;
+    border-left-color: #2d3748;
     transform: translateX(4px);
 }
 

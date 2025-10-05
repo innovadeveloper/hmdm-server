@@ -945,8 +945,8 @@ input[ng-model*="androidVersion"].form-control {
 }
 
 .modern-device-checkbox:checked {
-    background: #3182ce;
-    border-color: #3182ce;
+    background: #2d3748;
+    border-color: #000000;
 }
 
 .modern-device-checkbox:checked::after {
