@@ -1,132 +1,128 @@
 <!-- Localization completed -->
-<div ng-controller='HeaderController' class='content-wrapper fullscreen'>
-    <tabset class='tabset'>
-        <tab active="act.SUMMARY" ng-click="openTab('SUMMARY')">
-            <tab-heading>&nbsp;<span style="opacity: 0.7"
-                    class='glyphicon glyphicon-th-large'></span>&nbsp;</tab-heading>
-            <ng-include src="'app/components/main/view/summary.html'" ng-if="activeTab === 'SUMMARY'"></ng-include>
-        </tab>
+<div ng-controller='HeaderController'>
+<div ng-controller='ContentTabController' class='content-wrapper fullscreen'>
+    <div class='tabset'>
+        <ul class='nav nav-tabs'>
+            <li ng-class="{'active': act.SUMMARY}">
+                <a ng-click="openTab('SUMMARY')">&nbsp;<span style="opacity: 0.7" class='glyphicon glyphicon-th-large'></span>&nbsp;</a>
+            </li>
 
-        <tab active="act.DEVICES" ng-click="openTab('DEVICES')">
-            <tab-heading localized-change-tracking>tab.devices</tab-heading>
-            <ng-include src="'app/components/main/view/devices.html'" ng-if="activeTab === 'DEVICES'"></ng-include>
-        </tab>
+            <li ng-class="{'active': act.DEVICES}">
+                <a ng-click="openTab('DEVICES')" localized-change-tracking>tab.devices</a>
+            </li>
 
-        <tab active="act.APPS" ng-if="hasPermission('applications')" ng-click="openTab('APPS')">
-            <tab-heading localized-change-tracking>tab.applications</tab-heading>
-            <ng-include src="'app/components/main/view/applications.html'" ng-if="activeTab === 'APPS'"></ng-include>
-        </tab>
+            <li ng-if="hasPermission('applications')" ng-class="{'active': act.APPS}">
+                <a ng-click="openTab('APPS')" localized-change-tracking>tab.applications</a>
+            </li>
 
-        <tab active="act.CONFS" ng-if="hasPermission('configurations')" ng-click="openTab('CONFS')">
-            <tab-heading localized-change-tracking>tab.configurations</tab-heading>
-            <ng-include src="'app/components/main/view/configurations.html'" ng-if="activeTab === 'CONFS'"></ng-include>
-        </tab>
+            <li ng-if="hasPermission('configurations')" ng-class="{'active': act.CONFS}">
+                <a ng-click="openTab('CONFS')" localized-change-tracking>tab.configurations</a>
+            </li>
 
-        <tab active="act.FILES" ng-if="hasPermission('files')" ng-click="openTab('FILES')">
-            <tab-heading localized-change-tracking>tab.files</tab-heading>
-            <ng-include src="'app/components/main/view/files.html'" ng-if="activeTab === 'FILES'"></ng-include>
-        </tab>
+            <li ng-if="hasPermission('files')" ng-class="{'active': act.FILES}">
+                <a ng-click="openTab('FILES')" localized-change-tracking>tab.files</a>
+            </li>
 
-        <li ng-if="hasPermission('settings')" class="dropdown" uib-dropdown ng-class="{'active': settingsTabActive}">
-            <a class="dropdown-toggle" uib-dropdown-toggle href="#"><span
-                    localized-change-tracking>menu.settings</span><span class="caret"></span></a>
-            <ul class="dropdown-menu" uib-dropdown-menu>
-                <tab active="act.DESIGN" ng-click="openTab('DESIGN')">
-                    <tab-heading localized-change-tracking>tab.default.design</tab-heading>
-                    <ng-include src="'app/components/main/view/settings/design.html'"
-                        ng-if="activeTab === 'DESIGN'"></ng-include>
-                </tab>
-                <tab active="act.COMMON" ng-click="openTab('COMMON')">
-                    <tab-heading localized-change-tracking>tab.common.settings</tab-heading>
-                    <ng-include src="'app/components/main/view/settings/common.html'"
-                        ng-if="activeTab === 'COMMON'"></ng-include>
-                </tab>
-                <tab active="act.USERS" ng-click="openTab('USERS')">
-                    <tab-heading localized-change-tracking>tab.users</tab-heading>
-                    <ng-include src="'app/components/main/view/settings/users.html'"
-                        ng-if="activeTab === 'USERS'"></ng-include>
-                </tab>
-                <tab ng-if="canManageRoles()" active="act.ROLES" ng-click="openTab('ROLES')">
-                    <tab-heading localized-change-tracking>tab.roles</tab-heading>
-                    <ng-include src="'app/components/main/view/settings/roles.html'"
-                        ng-if="activeTab === 'ROLES'"></ng-include>
-                </tab>
-                <tab active="act.GROUPS" ng-click="openTab('GROUPS')">
-                    <tab-heading localized-change-tracking>tab.groups</tab-heading>
-                    <ng-include src="'app/components/main/view/settings/groups.html'"
-                        ng-if="activeTab === 'GROUPS'"></ng-include>
-                </tab>
-                <tab active="act.ICONS" ng-click="openTab('ICONS')">
-                    <tab-heading localized-change-tracking>tab.icons</tab-heading>
-                    <ng-include src="'app/components/main/view/settings/icons.html'"
-                        ng-if="activeTab === 'ICONS'"></ng-include>
-                </tab>
-                <tab active="act.LANG" ng-click="openTab('LANG')">
-                    <tab-heading localized-change-tracking>tab.language</tab-heading>
-                    <ng-include src="'app/components/main/view/settings/language.html'"
-                        ng-if="activeTab === 'LANG'"></ng-include>
-                </tab>
-                <!--                <tab  active="act.HINTS" ng-click="openTab('HINTS')">
-                    <tab-heading localized-change-tracking>tab.hints</tab-heading>
-                    <ng-include src="'app/components/main/view/settings/hints.html'" ng-if="activeTab === 'HINTS'"></ng-include>
-                </tab> -->
-                <tab active="act.PLUGINS" ng-click="openTab('PLUGINS')"
-                    ng-if="hasPermission('plugins_customer_access_management')">
-                    <tab-heading localized-change-tracking>tab.plugins</tab-heading>
-                    <ng-include src="'app/components/main/view/settings/plugins.html'"
-                        ng-if="activeTab === 'PLUGINS'"></ng-include>
-                </tab>
-
-                <tab ng-repeat="plugin in settingsPlugins" active="act['plugin-settings-' + plugin.identifier]"
-                    ng-if="!plugin.settingsPermission || hasPermission(plugin.settingsPermission)"
-                    ng-click="openTab('plugin-settings-' + plugin.identifier)">
-
-                    <tab-heading>{{localization.localize(plugin.nameLocalizationKey)}}</tab-heading>
-
-                    <ng-include src="plugin.settingsViewTemplate"
-                        ng-if="activeTab === ('plugin-settings-' + plugin.identifier)"></ng-include>
-                </tab>
-
-            </ul>
-        </li>
-
-        <li class="dropdown" uib-dropdown ng-if="functionsPlugins.length > 0" ng-class="{'active': pluginsTabActive}">
-            <a class="dropdown-toggle" uib-dropdown-toggle href="#">
-                <span localized-change-tracking>menu.functions</span><span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu" uib-dropdown-menu>
-                <tab ng-repeat="plugin in functionsPlugins" active="act['plugin-' + plugin.identifier]"
-                    ng-if="!plugin.functionsPermission || hasPermission(plugin.functionsPermission)"
-                    ng-click="openTab('plugin-' + plugin.identifier)">
-                    <tab-heading>{{localization.localize(plugin.nameLocalizationKey)}}</tab-heading>
-                    <ng-include src="plugin.functionsViewTemplate"
-                        ng-if="activeTab === ('plugin-' + plugin.identifier)"></ng-include>
-                </tab>
-            </ul>
-        </li>
-
-        <!-- User Info Tab - Right Aligned -->
-        <li class="tab-user-info">
-            <div class='tab-datetime hide-on-small-screen'>
-                <span id='tabDateTime'>{{dateTime}}</span>
-            </div>
-            <div class='tab-user-dropdown dropdown' uib-dropdown dropdown-append-to-body="true">
-                <a class='dropdown-toggle tab-user-toggle' uib-dropdown-toggle role='button' aria-expanded='false'>
-                    <span class='tab-username-label'>{{getUserName()}}</span>
-                    <span class='caret tab-username-caret'></span>
-                </a>
-                <ul class='dropdown-menu dropdown-menu-right tab-dropdown-menu' uib-dropdown-menu role='menu'>
-                    <li><a ng-style='color' ng-click="about()" localized-change-tracking>menu.about</a></li>
-                    <li><a ui-sref='profile' ng-style='color' localized-change-tracking>menu.profile</a></li>
-                    <li ng-if="updatesAllowed()"><a ui-sref='updates' ng-style='color'
-                            localized-change-tracking>menu.updates</a></li>
-                    <li ng-if="authService.isSuperAdmin() && !isControlPanel"><a ng-click='controlPanel()'
-                            localized-change-tracking>menu.panel.master</a></li>
-                    <li ng-if="authService.isSuperAdmin() && isControlPanel"><a ng-click='mainPanel()'
-                            localized-change-tracking>menu.panel.main</a></li>
-                    <li><a ng-click='logout()' localized-change-tracking>menu.logout</a></li>
+            <li ng-if="hasPermission('settings')" class="dropdown" uib-dropdown dropdown-append-to-body="true" ng-class="{'active': settingsTabActive}">
+                <a class="dropdown-toggle" uib-dropdown-toggle href="#"><span localized-change-tracking>menu.settings</span><span class="caret"></span></a>
+                <ul class="dropdown-menu" uib-dropdown-menu>
+                    <li><a ng-click="openTab('DESIGN')" localized-change-tracking>tab.default.design</a></li>
+                    <li><a ng-click="openTab('COMMON')" localized-change-tracking>tab.common.settings</a></li>
+                    <li><a ng-click="openTab('USERS')" localized-change-tracking>tab.users</a></li>
+                    <li ng-if="canManageRoles()"><a ng-click="openTab('ROLES')" localized-change-tracking>tab.roles</a></li>
+                    <li><a ng-click="openTab('GROUPS')" localized-change-tracking>tab.groups</a></li>
+                    <li><a ng-click="openTab('ICONS')" localized-change-tracking>tab.icons</a></li>
+                    <li><a ng-click="openTab('LANG')" localized-change-tracking>tab.language</a></li>
+                    <li ng-if="hasPermission('plugins_customer_access_management')"><a ng-click="openTab('PLUGINS')" localized-change-tracking>tab.plugins</a></li>
+                    <li ng-repeat="plugin in settingsPlugins" ng-if="!plugin.settingsPermission || hasPermission(plugin.settingsPermission)">
+                        <a ng-click="openTab('plugin-settings-' + plugin.identifier)">{{localization.localize(plugin.nameLocalizationKey)}}</a>
+                    </li>
                 </ul>
+            </li>
+
+            <li class="dropdown" uib-dropdown dropdown-append-to-body="true" ng-if="functionsPlugins.length > 0" ng-class="{'active': pluginsTabActive}">
+                <a class="dropdown-toggle" uib-dropdown-toggle href="#">
+                    <span localized-change-tracking>menu.functions</span><span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu" uib-dropdown-menu>
+                    <li ng-repeat="plugin in functionsPlugins" ng-if="!plugin.functionsPermission || hasPermission(plugin.functionsPermission)">
+                        <a ng-click="openTab('plugin-' + plugin.identifier)">{{localization.localize(plugin.nameLocalizationKey)}}</a>
+                    </li>
+                </ul>
+            </li>
+
+            <!-- User Info Tab - Right Aligned -->
+            <li class="tab-user-info">
+                <div class='tab-datetime hide-on-small-screen'>
+                    <span id='tabDateTime'>{{dateTime}}</span>
+                </div>
+                <div class='tab-user-dropdown dropdown' uib-dropdown dropdown-append-to-body="true">
+                    <a class='dropdown-toggle tab-user-toggle' uib-dropdown-toggle role='button' aria-expanded='false'>
+                        <span class='tab-username-label'>{{getUserName()}}</span>
+                        <span class='caret tab-username-caret'></span>
+                    </a>
+                    <ul class='dropdown-menu dropdown-menu-right tab-dropdown-menu' uib-dropdown-menu role='menu'>
+                        <li><a ng-style='color' ng-click="about()" localized-change-tracking>menu.about</a></li>
+                        <li><a ui-sref='profile' ng-style='color' localized-change-tracking>menu.profile</a></li>
+                        <li ng-if="updatesAllowed()"><a ui-sref='updates' ng-style='color' localized-change-tracking>menu.updates</a></li>
+                        <li ng-if="authService.isSuperAdmin() && !isControlPanel"><a ng-click='controlPanel()' localized-change-tracking>menu.panel.master</a></li>
+                        <li ng-if="authService.isSuperAdmin() && isControlPanel"><a ng-click='mainPanel()' localized-change-tracking>menu.panel.main</a></li>
+                        <li><a ng-click='logout()' localized-change-tracking>menu.logout</a></li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+
+        <!-- Tab Content Area -->
+        <div class='tab-content'>
+            <div ng-if="activeTab === 'SUMMARY'">
+                <ng-include src="'app/components/main/view/summary.html'"></ng-include>
             </div>
-        </li>
-    </tabset>
+            <div ng-if="activeTab === 'DEVICES'">
+                <ng-include src="'app/components/main/view/devices.html'"></ng-include>
+            </div>
+            <div ng-if="activeTab === 'APPS' && hasPermission('applications')">
+                <ng-include src="'app/components/main/view/applications.html'"></ng-include>
+            </div>
+            <div ng-if="activeTab === 'CONFS' && hasPermission('configurations')">
+                <ng-include src="'app/components/main/view/configurations.html'"></ng-include>
+            </div>
+            <div ng-if="activeTab === 'FILES' && hasPermission('files')">
+                <ng-include src="'app/components/main/view/files.html'"></ng-include>
+            </div>
+            <!-- Settings Views -->
+            <div ng-if="activeTab === 'DESIGN' && hasPermission('settings')">
+                <ng-include src="'app/components/main/view/settings/design.html'"></ng-include>
+            </div>
+            <div ng-if="activeTab === 'COMMON' && hasPermission('settings')">
+                <ng-include src="'app/components/main/view/settings/common.html'"></ng-include>
+            </div>
+            <div ng-if="activeTab === 'USERS' && hasPermission('settings')">
+                <ng-include src="'app/components/main/view/settings/users.html'"></ng-include>
+            </div>
+            <div ng-if="activeTab === 'ROLES' && hasPermission('settings') && canManageRoles()">
+                <ng-include src="'app/components/main/view/settings/roles.html'"></ng-include>
+            </div>
+            <div ng-if="activeTab === 'GROUPS' && hasPermission('settings')">
+                <ng-include src="'app/components/main/view/settings/groups.html'"></ng-include>
+            </div>
+            <div ng-if="activeTab === 'ICONS' && hasPermission('settings')">
+                <ng-include src="'app/components/main/view/settings/icons.html'"></ng-include>
+            </div>
+            <div ng-if="activeTab === 'LANG' && hasPermission('settings')">
+                <ng-include src="'app/components/main/view/settings/language.html'"></ng-include>
+            </div>
+            <div ng-if="activeTab === 'PLUGINS' && hasPermission('settings') && hasPermission('plugins_customer_access_management')">
+                <ng-include src="'app/components/main/view/settings/plugins.html'"></ng-include>
+            </div>
+            <!-- Plugin Views -->
+            <div ng-repeat="plugin in settingsPlugins" ng-if="activeTab === ('plugin-settings-' + plugin.identifier) && (!plugin.settingsPermission || hasPermission(plugin.settingsPermission))">
+                <ng-include src="plugin.settingsViewTemplate"></ng-include>
+            </div>
+            <div ng-repeat="plugin in functionsPlugins" ng-if="activeTab === ('plugin-' + plugin.identifier) && (!plugin.functionsPermission || hasPermission(plugin.functionsPermission))">
+                <ng-include src="plugin.functionsViewTemplate"></ng-include>
+            </div>
+        </div>
+    </div>
+</div>
 </div>

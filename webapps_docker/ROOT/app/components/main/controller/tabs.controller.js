@@ -90,4 +90,152 @@ angular.module('headwind-kiosk')
 //        }, 100);
 
         loadData();
+    })
+    .controller('ContentTabController', function ($scope, userService, authService, $state,
+                                           pluginService, localization) {
+
+        $scope.localization = localization;
+
+        var routes = {
+            SUMMARY: 'summary',
+            DEVICES: 'main',
+            APPS: 'applications',
+            CONFS: 'configurations',
+            FILES: 'files',
+            DESIGN: 'designSettings',
+            COMMON: 'commonSettings',
+            USERS: 'users',
+            ROLES: 'roles',
+            GROUPS: 'groups',
+            ICONS: 'icons',
+            LANG: 'langSettings',
+            HINTS: 'hints',
+            PLUGINS: 'pluginSettings'
+        };
+
+        var loadData = function () {
+            pluginService.getAvailablePlugins(function (response) {
+                if (response.status === 'OK') {
+                    if (response.data) {
+                        // Plugins available for Functions tab
+                        $scope.functionsPlugins = response.data.filter(function (plugin) {
+                            return plugin.functionsViewTemplate !== undefined && plugin.functionsViewTemplate !== null;
+                        });
+                        $scope.functionsPlugins.forEach(function (plugin) {
+                            let ID = 'plugin-' + plugin.identifier;
+                            routes[ID] = ID;
+                        });
+
+                        // Plugins available for Settings tab
+                        $scope.settingsPlugins = response.data.filter(function (plugin) {
+                            return plugin.settingsViewTemplate !== undefined && plugin.settingsViewTemplate !== null;
+                        });
+                        $scope.settingsPlugins.forEach(function (plugin) {
+                            let ID = 'plugin-settings-' + plugin.identifier;
+                            routes[ID] = ID;
+                        });
+                    }
+                } else {
+                    $scope.functionsPlugins = [];
+                    $scope.settingsPlugins = [];
+                }
+            });
+        };
+
+        $scope.currentUser = {};
+
+        $scope.hasPermission = authService.hasPermission;
+        $scope.canManageRoles = function() {
+            return authService.isSingleCustomer() || authService.isSuperAdmin();
+        };
+
+        // Determine active tab based on current state
+        function getActiveTabFromState() {
+            var stateName = $state.current.name;
+            var stateToTab = {
+                'summary': 'SUMMARY',
+                'main': 'DEVICES',
+                'applications': 'APPS',
+                'configurations': 'CONFS',
+                'files': 'FILES',
+                'designSettings': 'DESIGN',
+                'commonSettings': 'COMMON',
+                'users': 'USERS',
+                'roles': 'ROLES',
+                'groups': 'GROUPS',
+                'icons': 'ICONS',
+                'langSettings': 'LANG',
+                'hints': 'HINTS',
+                'pluginSettings': 'PLUGINS'
+            };
+
+            // Check for plugin states
+            if (stateName && stateName.startsWith('plugin-')) {
+                return stateName.toUpperCase();
+            }
+
+            return stateToTab[stateName] || 'DEVICES';
+        }
+
+        $scope.activeTab = getActiveTabFromState();
+
+        $scope.act = {};
+        $scope.act[$scope.activeTab] = true;
+
+        $scope.functionsPlugins = [];
+        $scope.settingsPlugins = [];
+
+        function updateDropdownActiveStates() {
+            $scope.settingsTabActive = ['DESIGN', 'COMMON', 'USERS', 'ROLES', 'GROUPS', 'ICONS', 'LANG', 'HINTS', 'PLUGINS'].includes($scope.activeTab) ||
+                ($scope.settingsPlugins && $scope.settingsPlugins.some(function(plugin) {
+                    return $scope.activeTab === 'plugin-settings-' + plugin.identifier;
+                }));
+
+            $scope.pluginsTabActive = $scope.functionsPlugins && $scope.functionsPlugins.some(function(plugin) {
+                return $scope.activeTab === 'plugin-' + plugin.identifier;
+            });
+        }
+
+        // Calculate active states for dropdown menus
+        updateDropdownActiveStates();
+
+        $scope.openTab = function (tabName) {
+            if (tabName === $scope.activeTab) {
+                return;
+            }
+            // Update activeTab immediately
+            $scope.activeTab = tabName;
+
+            // Reset all act states
+            $scope.act = {};
+            $scope.act[tabName] = true;
+
+            // Update dropdown active states
+            updateDropdownActiveStates();
+
+            if (routes[tabName]) {
+                $state.transitionTo(routes[tabName]);
+            }
+        };
+
+        $scope.$on('aero_PLUGINS_UPDATED', loadData);
+
+        // Listen for state changes to update active tab
+        $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
+            var newActiveTab = getActiveTabFromState();
+            if (newActiveTab !== $scope.activeTab) {
+                $scope.activeTab = newActiveTab;
+                $scope.act = {};
+                $scope.act[newActiveTab] = true;
+                updateDropdownActiveStates();
+            }
+        });
+
+        userService.getCurrent(function (response) {
+            if (response.data) {
+                $scope.currentUser = response.data;
+            }
+        });
+
+        loadData();
     });
