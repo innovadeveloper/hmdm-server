@@ -2694,11 +2694,12 @@ h4.collapse-control {
     font-family: 'Poppins', sans-serif;
     background: white;
     border-radius: 8px;
-    /*overflow: hidden;*/
     overflow: visible;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
     border: 1px solid #e5e7eb;
     margin-bottom: 0;
+    border-collapse: separate;
+    border-spacing: 0;
 }
 
 .modern-device-table thead {
@@ -2716,6 +2717,14 @@ h4.collapse-control {
     letter-spacing: 0.5px;
     position: relative;
     font-family: 'Poppins', sans-serif;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.modern-device-table thead th.pointer {
+    transition: background-color 0.15s ease;
 }
 
 .modern-device-table thead th.pointer:hover {
@@ -2725,11 +2734,11 @@ h4.collapse-control {
 .modern-device-table thead th .glyphicon {
     margin-left: 6px;
     opacity: 0.9;
+    transition: opacity 0.15s ease;
 }
 
 .modern-device-table tbody tr {
     border-bottom: 1px solid #f1f5f9;
-    transition: background-color 0.2s ease;
 }
 
 .modern-device-table tbody tr:nth-child(even) {
