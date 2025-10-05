@@ -97,10 +97,22 @@
             </div>
 
             <div class="col-sm-2  margin-bottom">
-                <select class='form-control' id="kweiufwieu" ng-model='additionalParams.installationStatus'
-                    ng-options="opt.id as opt.name for opt in installStatusOptions">
-                    <option value="" localized>form.devices.selection.install.status.default</option>
-                </select>
+                <div class="btn-group dropdown w-100" uib-dropdown>
+                    <button id="installationStatus-dropdown-button" uib-dropdown-toggle type="button"
+                        class="btn btn-default dropdown-toggle form-control text-left">
+                        <span>{{getSelectedInstallationStatusName()}}</span>
+                        <span class="caret pull-right" style="margin-top: 8px;"></span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-form w-100" uib-dropdown-menu role="menu"
+                        aria-labelledby="installationStatus-dropdown-button">
+                        <li role="menuitem">
+                            <a ng-mousedown="selectInstallationStatus('', localization.localize('form.devices.selection.install.status.default'))" href="javascript:void(0)" localized>form.devices.selection.install.status.default</a>
+                        </li>
+                        <li role="menuitem" ng-repeat="opt in installStatusOptions">
+                            <a ng-mousedown="selectInstallationStatus(opt.id, opt.name)" href="javascript:void(0)">{{opt.name}}</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
 
             <div class="col-sm-3  text-right margin-bottom">
@@ -111,26 +123,34 @@
 
         <div class="form-group" ng-if="additionalParams.enabled">
             <div class='col-sm-1  margin-bottom'>
-                <select class='form-control' id="onlineOrOffline" ng-model='additionalParams.onlineOrOffline'>
-                    <option value="" localized>form.devices.selection.status</option>
-                    <option value="1" localized>form.devices.selection.online</option>
-                    <option value="2" localized>form.devices.selection.offline</option>
-                </select>
+                <div class="btn-group dropdown w-100" uib-dropdown>
+                    <button id="onlineOrOffline-dropdown-button" uib-dropdown-toggle type="button"
+                        class="btn btn-default dropdown-toggle form-control text-left">
+                        <span>{{getSelectedOnlineOfflineName()}}</span>
+                        <span class="caret pull-right" style="margin-top: 8px;"></span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-form w-100" uib-dropdown-menu role="menu"
+                        aria-labelledby="onlineOrOffline-dropdown-button">
+                        <li role="menuitem" ng-repeat="opt in onlineOfflineOptions">
+                            <a ng-mousedown="selectOnlineOffline(opt.id, opt.name)" href="javascript:void(0)">{{opt.name}}</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
             <div class='col-sm-2  margin-bottom'>
-                <select class='form-control' id="onlineTimeSelect" ng-model='additionalParams.onlineTimeSelect'>
-                    <option value="15" localized>form.devices.selection.online.status.1</option>
-                    <option value="30" localized>form.devices.selection.online.status.2</option>
-                    <option value="60" localized>form.devices.selection.online.status.3</option>
-                    <option value="120" localized>form.devices.selection.online.status.4</option>
-                    <option value="360" localized>form.devices.selection.online.status.5</option>
-                    <option value="1440" localized>form.devices.selection.online.status.6</option>
-                    <option value="2880" localized>form.devices.selection.online.status.7</option>
-                    <option value="4320" localized>form.devices.selection.online.status.8</option>
-                    <option value="10080" localized>form.devices.selection.online.status.9</option>
-                    <option value="43200" localized>form.devices.selection.online.status.10</option>
-                    <option value="1" localized>form.devices.selection.online.status.custom</option>
-                </select>
+                <div class="btn-group dropdown w-100" uib-dropdown>
+                    <button id="onlineTimeSelect-dropdown-button" uib-dropdown-toggle type="button"
+                        class="btn btn-default dropdown-toggle form-control text-left">
+                        <span>{{getSelectedOnlineTimeName()}}</span>
+                        <span class="caret pull-right" style="margin-top: 8px;"></span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-form w-100" uib-dropdown-menu role="menu"
+                        aria-labelledby="onlineTimeSelect-dropdown-button">
+                        <li role="menuitem" ng-repeat="opt in onlineTimeOptions">
+                            <a ng-mousedown="selectOnlineTime(opt.id, opt.name)" href="javascript:void(0)">{{opt.name}}</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
             <div class='col-sm-1  margin-bottom' ng-if='additionalParams.onlineTimeSelect == 1'>
                 <input type='number' ng-enter='initSearch()' ng-model='additionalParams.onlineTimeEnter'
@@ -142,19 +162,35 @@
             <div class='col-sm-2  margin-bottom' ng-if='additionalParams.onlineTimeSelect != 1'>&nbsp;</div>
 
             <div class='col-sm-2  margin-bottom'>
-                <select class='form-control' id="mdmMode" ng-model='additionalParams.mdmMode'>
-                    <option value="" localized>form.settings.common.mdm.mode</option>
-                    <option value="1" localized>form.selection.status.yes</option>
-                    <option value="0" localized>form.selection.status.no</option>
-                </select>
+                <div class="btn-group dropdown w-100" uib-dropdown>
+                    <button id="mdmMode-dropdown-button" uib-dropdown-toggle type="button"
+                        class="btn btn-default dropdown-toggle form-control text-left">
+                        <span>{{getSelectedMdmModeName()}}</span>
+                        <span class="caret pull-right" style="margin-top: 8px;"></span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-form w-100" uib-dropdown-menu role="menu"
+                        aria-labelledby="mdmMode-dropdown-button">
+                        <li role="menuitem" ng-repeat="opt in mdmModeOptions">
+                            <a ng-mousedown="selectMdmMode(opt.id, opt.name)" href="javascript:void(0)">{{opt.name}}</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
 
             <div class='col-sm-2  margin-bottom'>
-                <select class='form-control' id="kioskMode" ng-model='additionalParams.kioskMode'>
-                    <option value="" localized>form.settings.common.kiosk.mode</option>
-                    <option value="1" localized>form.selection.status.yes</option>
-                    <option value="0" localized>form.selection.status.no</option>
-                </select>
+                <div class="btn-group dropdown w-100" uib-dropdown>
+                    <button id="kioskMode-dropdown-button" uib-dropdown-toggle type="button"
+                        class="btn btn-default dropdown-toggle form-control text-left">
+                        <span>{{getSelectedKioskModeName()}}</span>
+                        <span class="caret pull-right" style="margin-top: 8px;"></span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-form w-100" uib-dropdown-menu role="menu"
+                        aria-labelledby="kioskMode-dropdown-button">
+                        <li role="menuitem" ng-repeat="opt in kioskModeOptions">
+                            <a ng-mousedown="selectKioskMode(opt.id, opt.name)" href="javascript:void(0)">{{opt.name}}</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
 
             <div class='col-sm-3  margin-bottom'>

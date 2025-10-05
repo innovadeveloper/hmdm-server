@@ -218,6 +218,121 @@ angular.module('headwind-kiosk')
             $scope.initSearch();
         };
 
+        // Installation Status dropdown functions
+        $scope.getSelectedInstallationStatusName = function() {
+            if (!$scope.installStatusOptions || $scope.installStatusOptions.length === 0) {
+                return 'Loading...';
+            }
+            if ($scope.additionalParams.installationStatus) {
+                var selectedStatus = $scope.installStatusOptions.find(function(opt) {
+                    return opt.id === $scope.additionalParams.installationStatus;
+                });
+                return selectedStatus ? selectedStatus.name : localization.localize('form.devices.selection.install.status.default');
+            }
+            return localization.localize('form.devices.selection.install.status.default');
+        };
+
+        $scope.selectInstallationStatus = function(statusId, statusName) {
+            $scope.additionalParams.installationStatus = statusId;
+            $scope.initSearch();
+        };
+
+        // Online/Offline dropdown functions
+        $scope.onlineOfflineOptions = [
+            {id: '', name: localization.localize('form.devices.selection.status')},
+            {id: '1', name: localization.localize('form.devices.selection.online')},
+            {id: '2', name: localization.localize('form.devices.selection.offline')}
+        ];
+
+        $scope.getSelectedOnlineOfflineName = function() {
+            if ($scope.additionalParams.onlineOrOffline) {
+                var selectedOption = $scope.onlineOfflineOptions.find(function(opt) {
+                    return opt.id === $scope.additionalParams.onlineOrOffline;
+                });
+                return selectedOption ? selectedOption.name : localization.localize('form.devices.selection.status');
+            }
+            return localization.localize('form.devices.selection.status');
+        };
+
+        $scope.selectOnlineOffline = function(optionId, optionName) {
+            $scope.additionalParams.onlineOrOffline = optionId;
+            $scope.initSearch();
+        };
+
+        // Online Time Select dropdown functions
+        $scope.onlineTimeOptions = [
+            {id: '15', name: localization.localize('form.devices.selection.online.status.1')},
+            {id: '30', name: localization.localize('form.devices.selection.online.status.2')},
+            {id: '60', name: localization.localize('form.devices.selection.online.status.3')},
+            {id: '120', name: localization.localize('form.devices.selection.online.status.4')},
+            {id: '360', name: localization.localize('form.devices.selection.online.status.5')},
+            {id: '1440', name: localization.localize('form.devices.selection.online.status.6')},
+            {id: '2880', name: localization.localize('form.devices.selection.online.status.7')},
+            {id: '4320', name: localization.localize('form.devices.selection.online.status.8')},
+            {id: '10080', name: localization.localize('form.devices.selection.online.status.9')},
+            {id: '43200', name: localization.localize('form.devices.selection.online.status.10')},
+            {id: '1', name: localization.localize('form.devices.selection.online.status.custom')}
+        ];
+
+        $scope.getSelectedOnlineTimeName = function() {
+            if ($scope.additionalParams.onlineTimeSelect) {
+                var selectedTime = $scope.onlineTimeOptions.find(function(opt) {
+                    return opt.id === $scope.additionalParams.onlineTimeSelect;
+                });
+                return selectedTime ? selectedTime.name : $scope.onlineTimeOptions[0].name;
+            }
+            return $scope.onlineTimeOptions[0].name;
+        };
+
+        $scope.selectOnlineTime = function(timeId, timeName) {
+            $scope.additionalParams.onlineTimeSelect = timeId;
+            $scope.initSearch();
+        };
+
+        // MDM Mode dropdown functions
+        $scope.mdmModeOptions = [
+            {id: '', name: localization.localize('form.settings.common.mdm.mode')},
+            {id: '1', name: localization.localize('form.selection.status.yes')},
+            {id: '0', name: localization.localize('form.selection.status.no')}
+        ];
+
+        $scope.getSelectedMdmModeName = function() {
+            if ($scope.additionalParams.mdmMode !== null && $scope.additionalParams.mdmMode !== undefined && $scope.additionalParams.mdmMode !== '') {
+                var selectedMdm = $scope.mdmModeOptions.find(function(opt) {
+                    return opt.id === $scope.additionalParams.mdmMode;
+                });
+                return selectedMdm ? selectedMdm.name : localization.localize('form.settings.common.mdm.mode');
+            }
+            return localization.localize('form.settings.common.mdm.mode');
+        };
+
+        $scope.selectMdmMode = function(modeId, modeName) {
+            $scope.additionalParams.mdmMode = modeId;
+            $scope.initSearch();
+        };
+
+        // Kiosk Mode dropdown functions
+        $scope.kioskModeOptions = [
+            {id: '', name: localization.localize('form.settings.common.kiosk.mode')},
+            {id: '1', name: localization.localize('form.selection.status.yes')},
+            {id: '0', name: localization.localize('form.selection.status.no')}
+        ];
+
+        $scope.getSelectedKioskModeName = function() {
+            if ($scope.additionalParams.kioskMode !== null && $scope.additionalParams.kioskMode !== undefined && $scope.additionalParams.kioskMode !== '') {
+                var selectedKiosk = $scope.kioskModeOptions.find(function(opt) {
+                    return opt.id === $scope.additionalParams.kioskMode;
+                });
+                return selectedKiosk ? selectedKiosk.name : localization.localize('form.settings.common.kiosk.mode');
+            }
+            return localization.localize('form.settings.common.kiosk.mode');
+        };
+
+        $scope.selectKioskMode = function(modeId, modeName) {
+            $scope.additionalParams.kioskMode = modeId;
+            $scope.initSearch();
+        };
+
         var loadCommonSettings = function(completion) {
             settingsService.getSettings({}, function(response) {
                 if (response.data) {
