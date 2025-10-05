@@ -62,7 +62,7 @@ angular.module('headwind-kiosk')
             $state.transitionTo('signup');
         };
 
-            /**
+        /**
          * detect IE
          * returns version of IE or false, if browser is not Internet Explorer
          */
@@ -91,4 +91,26 @@ angular.module('headwind-kiosk')
             // other browser
             return false;
         }
+    })
+    .controller('ClockController', function ($scope, $interval) {
+        $scope.currentTime = {
+            hoursMinutes: '00:00',
+            seconds: ':00'
+        };
+
+        function updateTime() {
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+
+            $scope.currentTime.hoursMinutes = hours + ':' + minutes;
+            $scope.currentTime.seconds = ':' + seconds;
+        }
+
+        // Update immediately
+        updateTime();
+
+        // Update every second using AngularJS $interval
+        $interval(updateTime, 1000);
     });

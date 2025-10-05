@@ -1,38 +1,81 @@
-<!--<div class="login-logo" ng-if="rebranding"><img src="rest/public/logo"><span class="logo">{{rebranding.appName}}</span></div>-->
-<div class="login-logo" ng-if="rebranding"><span class="logo">{{rebranding.appName}}</span></div>
+<!-- Modern Login Layout -->
+<div ng-if="!isIE" class="modern-login-container">
+    <div class="login-split-layout">
+        <!-- Left Panel - Authentication Form -->
+        <div class="login-left-panel">
+            <div class="login-form-container">
+                <!-- Title -->
+                <h2 class="login-title">Autenticación</h2>
 
-<!-- Localization completed -->
-<div ng-if="!isIE">
-    <div class='panel panel-default login' ng-class='{"panel-danger": errorMessage, "panel-success": successMessage}'>
-        <div class='panel-heading' ng-if='errorMessage'>{{errorMessage}}</div>
-        <div class='panel-heading' ng-if='successMessage'>{{successMessage}}</div>
-        <div class='panel-body' style="padding: 30px; background: #f6f8fc">
-            <form name='loginForm' ng-submit='onLogin()' style="margin-bottom: 0px">
-                <div class='form-group'>
-                    <label for='username' localized>login.username</label>
-                    <input type='text' class='form-control' id='username'
-                           ng-model='login.username' localized-placeholder="login.username.placeholder"
-                           required/>
-                </div>
-                <div class='form-group'>
-                    <label for='password' localized>login.password</label>
-                    <input type='password' class='form-control' id='password'
-                           ng-model='login.password' localized-placeholder='login.password.placeholder'
-                           required/>
-                </div>
+                <!-- Login Form -->
+                <form name='loginForm' ng-submit='onLogin()' class="modern-login-form">
 
-                <div style="float: left; min-height: 45px; display: flex; flex-direction: column">
-                    <div ng-if="canRecover" style="margin: auto; width: 100%"><a class="action-link" ng-click="recoverPassword()" localized>login.password.recovery</a></div>
-                    <div ng-if="rebranding.signupLink" style="margin: auto; width: 100%"><span localized>login.no.account</span> <a class="action-link" href="{{rebranding.signupLink}}" localized>login.signup</a></div>
-                    <div ng-if="!rebranding.signupLink && canSignup" style="margin: auto; width: 100%"><span localized>login.no.account</span> <a class="action-link" ng-click="signup()" localized>login.signup</a></div>
-                </div>
+                    <!-- Error/Success Messages inside form -->
+                    <div class="login-error-message" ng-if="errorMessage">
+                        {{errorMessage}}
+                    </div>
+                    <div class="login-success-message" ng-if="successMessage">
+                        {{successMessage}}
+                    </div>
+                    <div class='form-group'>
+                        <input type='text' class='form-control modern-input' id='username'
+                               ng-model='login.username' localized-placeholder="login.username.placeholder"
+                               placeholder="Usuario"
+                               required/>
+                    </div>
+                    <div class='form-group'>
+                        <input type='password' class='form-control modern-input' id='password'
+                               ng-model='login.password' localized-placeholder='login.password.placeholder'
+                               placeholder="Contraseña"
+                               required/>
+                    </div>
 
-                <button type='submit' class='btn btn-default right' style="opacity: 1; margin-top: 9px"
-                        ng-disabled='loginForm.$invalid' localized>login.submit</button>
-            </form>
+                    <button type='submit' class='btn modern-login-btn'
+                            ng-disabled='loginForm.$invalid' localized>login.submit</button>
+
+                    <!-- Action Links -->
+                    <div class="login-actions">
+                        <div ng-if="canRecover">
+                            <a class="action-link" ng-click="recoverPassword()" localized>login.password.recovery</a>
+                        </div>
+                        <div ng-if="rebranding.signupLink">
+                            <span localized>login.no.account</span>
+                            <a class="action-link" href="{{rebranding.signupLink}}" localized>login.signup</a>
+                        </div>
+                        <div ng-if="!rebranding.signupLink && canSignup">
+                            <span localized>login.no.account</span>
+                            <a class="action-link" ng-click="signup()" localized>login.signup</a>
+                        </div>
+                    </div>
+                </form>
+
+                <!-- Footer Text -->
+                <div class="login-form-footer" ng-if="rebranding">
+                    <small>{{rebranding.appName}} - <span localized>app.description</span></small>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Panel - Visual Element -->
+        <div class="login-right-panel">
+            <div class="login-visual">
+                <!-- Phone/Device Visual Element -->
+                <div class="device-mockup">
+                    <div class="device-screen">
+                        <!-- You can add your visual content here -->
+                        <div class="device-content">
+                            <div class="time-display" id="live-clock" ng-controller="ClockController">
+                                <span class="hours-minutes">{{currentTime.hoursMinutes}}</span><span class="seconds">{{currentTime.seconds}}</span>
+                            </div>
+                            <div class="device-bg"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
+
 
 <div class='content-wrapper width-1000' ng-if="isIE">
     <div localized>ie.browser.notice.1</div>
@@ -42,3 +85,4 @@
 <div class="login-footer" ng-if="rebranding">
     <span>{{rebranding.appName}}</span> <span localized>app.description</span>. (c) {{rebranding.year}} <a href="{{rebranding.vendorLink}}">{{rebranding.vendorName}}</a>
 </div>
+
