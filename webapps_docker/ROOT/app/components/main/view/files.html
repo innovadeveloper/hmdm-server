@@ -41,8 +41,10 @@
         </thead>
         <tbody>
         <tr ng-repeat='file in files.slice(((paging.currentPage-1)*paging.pageSize), ((paging.currentPage)*paging.pageSize))'>
-            <td>{{file.filePath}}</td>
-            <td>{{file.description}}</td>
+            <td>{{file.name}}</td>
+            <!-- <td>{{file.filePath}}</td> -->
+            <!-- <td>{{file.description}}</td> -->
+            <td>{{file.path}}</td>
             <td>{{!file.external ? readableSizeMb(file.size) : ''}}</td>
             <td>{{!file.external && file.size != -1 ? (file.uploadTime|date:updateTimeFormat) : ''}}</td>
             <td>{{file.devicePath}}</td>

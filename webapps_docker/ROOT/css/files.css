@@ -1,0 +1,378 @@
+/* Files Modal Styles */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+/* General Files Modal Container */
+.files-modal-container {
+    font-family: 'Poppins', sans-serif;
+    padding: 20px;
+    background: #f8fafc;
+}
+
+/* Modal Form Styles */
+.files-modal-form {
+    background: white;
+    border-radius: 12px;
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e5e7eb;
+}
+
+/* Input Field Styling */
+.files-modal input[type="text"] {
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    color: #2d3748;
+    transition: all 0.2s ease;
+    background: white;
+}
+
+.files-modal input[type="text"]:focus {
+    outline: none;
+    border-color: #2d3748;
+    box-shadow: 0 0 0 3px rgba(45, 55, 72, 0.1);
+}
+
+.files-modal input[type="text"]::placeholder {
+    color: #a0aec0;
+    font-weight: 400;
+}
+
+/* Custom Checkbox Styling for Files Modal */
+.files-modal .custom-checkbox {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: #4a5568;
+    margin: 0;
+    padding: 12px 0;
+}
+
+.files-modal .custom-checkbox input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.files-modal .custom-checkbox .checkmark {
+    position: relative;
+    height: 20px;
+    width: 20px;
+    background-color: white;
+    border: 2px solid #2d3748;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.files-modal .custom-checkbox:hover .checkmark {
+    border-color: #2d3748;
+    box-shadow: 0 0 0 3px rgba(45, 55, 72, 0.1);
+}
+
+.files-modal .custom-checkbox input[type="checkbox"]:checked ~ .checkmark {
+    background-color: #2d3748;
+    border-color: #2d3748;
+}
+
+.files-modal .custom-checkbox input[type="checkbox"]:checked ~ .checkmark::after {
+    content: '';
+    position: absolute;
+    display: block;
+    left: 6px;
+    top: 2px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.files-modal .custom-checkbox .checkbox-label {
+    user-select: none;
+    line-height: 1.4;
+    margin: 0;
+    font-weight: 500;
+    color: #2d3748;
+}
+
+/* Disabled state for checkboxes */
+.files-modal .custom-checkbox input[type="checkbox"]:disabled ~ .checkmark {
+    background-color: #e2e8f0;
+    border-color: #e2e8f0;
+    cursor: not-allowed;
+}
+
+.files-modal .custom-checkbox input[type="checkbox"]:disabled ~ .checkbox-label {
+    color: #a0aec0;
+    cursor: not-allowed;
+}
+
+.files-modal .custom-checkbox input[type="checkbox"]:disabled:checked ~ .checkmark {
+    background-color: #cbd5e0;
+    border-color: #cbd5e0;
+}
+
+.files-modal .custom-checkbox input[type="checkbox"]:disabled:checked ~ .checkmark::after {
+    border-color: #a0aec0;
+}
+
+/* Checkbox Container Centering */
+.files-modal .checkbox-container-centered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 0;
+}
+
+/* Upload Button Styling for Files Modal */
+.files-modal .btn.full-width,
+.files-modal .btn-upload-custom,
+.files-modal div.btn-upload-custom {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    background: #2d3748 !important;
+    color: white !important;
+    border: 2px solid #2d3748 !important;
+    border-radius: 8px !important;
+    padding: 14px 24px !important;
+    font-family: 'Poppins', sans-serif !important;
+    font-weight: 500 !important;
+    font-size: 14px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    transition: all 0.2s ease !important;
+    cursor: pointer !important;
+    min-height: 48px !important;
+    box-shadow: 0 2px 4px rgba(45, 55, 72, 0.1) !important;
+    width: 100% !important;
+    margin: 0 !important;
+}
+
+.files-modal .btn.full-width:hover,
+.files-modal .btn.full-width:focus,
+.files-modal .btn-upload-custom:hover,
+.files-modal .btn-upload-custom:focus,
+.files-modal div.btn-upload-custom:hover,
+.files-modal div.btn-upload-custom:focus {
+    background: #1a202c !important;
+    border-color: #1a202c !important;
+    color: white !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 12px rgba(45, 55, 72, 0.25) !important;
+    text-decoration: none !important;
+    outline: none !important;
+}
+
+.files-modal .btn.full-width:active,
+.files-modal .btn-upload-custom:active,
+.files-modal div.btn-upload-custom:active {
+    background: #0d1015 !important;
+    border-color: #0d1015 !important;
+    transform: translateY(0) !important;
+    box-shadow: 0 2px 4px rgba(45, 55, 72, 0.2) !important;
+}
+
+.files-modal .btn.full-width:disabled,
+.files-modal .btn.full-width[disabled],
+.files-modal .btn-upload-custom:disabled,
+.files-modal .btn-upload-custom[disabled],
+.files-modal div.btn-upload-custom:disabled,
+.files-modal div.btn-upload-custom[disabled] {
+    background: #e2e8f0 !important;
+    border-color: #e2e8f0 !important;
+    color: #a0aec0 !important;
+    cursor: not-allowed !important;
+    transform: none !important;
+    box-shadow: none !important;
+    opacity: 1 !important;
+}
+
+/* Add upload icon to files upload button */
+.files-modal .btn.full-width::before,
+.files-modal .btn-upload-custom::before,
+.files-modal div.btn-upload-custom::before {
+    content: '📁';
+    font-size: 16px;
+    margin-right: 8px;
+}
+
+/* Field Hint Styling */
+.files-modal .field-hint {
+    background: #e6fffa;
+    color: #38b2ac;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    border-left: 4px solid #38b2ac;
+    margin-top: 8px;
+}
+
+/* Button Styling */
+.files-modal .btn {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.2s ease;
+    border: 2px solid transparent;
+    margin-right: 12px;
+}
+
+.files-modal .btn:last-child {
+    margin-right: 0;
+}
+
+.files-modal .btn-default {
+    background: #2d3748;
+    color: white;
+    border-color: #2d3748;
+}
+
+.files-modal .btn-default:hover {
+    background: #1a202c;
+    border-color: #1a202c;
+    color: white;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(45, 55, 72, 0.25);
+}
+
+.files-modal .btn-default:disabled {
+    background: #e2e8f0;
+    border-color: #e2e8f0;
+    color: #a0aec0;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* Button Container Alignment */
+.files-modal .form-group .col-sm-8:has(.btn[type="submit"]) {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-direction: row;
+}
+
+/* Alternative selector for button container */
+.files-modal .form-group:last-child .col-sm-8 {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-direction: row;
+}
+
+/* Loading Spinner */
+.files-modal .loading-spinner {
+    width: 32px;
+    height: 32px;
+    opacity: 0.8;
+}
+
+/* Form Labels */
+.files-modal .control-label {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    color: #2d3748;
+    font-size: 14px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    min-height: 48px;
+}
+
+/* Form Group Alignment */
+.files-modal .form-group {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    min-height: 48px;
+}
+
+.files-modal .form-group .col-sm-4 {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 15px;
+}
+
+.files-modal .form-group .col-sm-8 {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/* Upload button container alignment */
+.files-modal .form-group .col-sm-8 > div.btn {
+    width: 100%;
+    margin: 0;
+}
+
+/* Error and Success Messages */
+.files-modal .error {
+    background: #fed7d7;
+    color: #e53e3e;
+    padding: 12px 16px;
+    border-radius: 8px;
+    border-left: 4px solid #e53e3e;
+    font-weight: 500;
+}
+
+.files-modal .success {
+    background: #c6f6d5;
+    color: #38a169;
+    padding: 12px 16px;
+    border-radius: 8px;
+    border-left: 4px solid #38a169;
+    font-weight: 500;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .files-modal-container {
+        padding: 15px;
+    }
+
+    .files-modal-form {
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+
+    .files-modal .custom-checkbox {
+        font-size: 13px;
+        gap: 10px;
+    }
+
+    .files-modal .custom-checkbox .checkmark {
+        height: 18px;
+        width: 18px;
+    }
+
+    .files-modal .custom-checkbox input[type="checkbox"]:checked ~ .checkmark::after {
+        left: 5px;
+        top: 1px;
+        width: 4px;
+        height: 8px;
+    }
+}

@@ -5,7 +5,7 @@
 <div ng-show='successMessage' class='modal-header'>
     <div ng-show='successMessage' class='success'><span>{{successMessage}}</span></div>
 </div>
-<div class='modal-body'>
+<div class='modal-body files-modal'>
     <form class='form-horizontal'>
 
         <div class='form-group'>
@@ -16,22 +16,26 @@
         </div>
 
         <div class='form-group' ng-disabled="file.id">
-            <label class='col-sm-4 control-label' for="fileExternal" localized>form.file.external</label>
-            <div class='col-sm-2'>
-                <input localized-title="form.file.external.title" ng-model='file.external' type='checkbox'
-                       ng-disabled="file.id" class='form-control' id="fileExternal"/>
+            <div class='col-sm-12 checkbox-container-centered'>
+                <label for="fileExternal" class="custom-checkbox">
+                    <input localized-title="form.file.external.title" ng-model='file.external' type='checkbox'
+                           ng-disabled="file.id" id="fileExternal"/>
+                    <span class="checkmark"></span>
+                    <span class="checkbox-label" localized>form.file.external</span>
+                </label>
             </div>
         </div>
 
         <div ng-if='!file.id && !file.external' class='form-group'>
             <label class='col-sm-4 control-label' localized>form.file.file</label>
             <div class='col-sm-8'>
-                <div class="btn btn-default full-width btn-upload"
+                <div class="btn"
                      upload-button
                      url="rest/private/web-ui-files/raw"
                      on-upload="onStartedUpload()"
                      on-progress="onUploadProgress(progress)"
-                     on-success="fileUploaded( response )"></div>
+                     on-success="fileUploaded( response )">
+                </div>
                 <div ng-if="availableSpace" class="field-hint" style="margin-bottom: 0">{{availableSpace}}</div>
             </div>
         </div>
@@ -66,10 +70,13 @@
         </div>
 
         <div class='form-group'>
-            <label class='col-sm-4 control-label' for="variableContent" localized>form.configuration.files.variables</label>
-            <div class='col-sm-2'>
-                <input localized-title="form.configuration.files.variables.hint" ng-model='file.replaceVariables' type='checkbox'
-                       class='form-control' id="variableContent"/>
+            <div class='col-sm-12 checkbox-container-centered'>
+                <label for="variableContent" class="custom-checkbox">
+                    <input localized-title="form.configuration.files.variables.hint" ng-model='file.replaceVariables' type='checkbox'
+                           id="variableContent"/>
+                    <span class="checkmark"></span>
+                    <span class="checkbox-label" localized>form.configuration.files.variables</span>
+                </label>
             </div>
         </div>
 
