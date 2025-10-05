@@ -1315,6 +1315,45 @@ div.row.device-app-settings-wrapper{
     margin: 0;
 }
 
+/* Disabled state for custom checkbox */
+.custom-checkbox input[type="checkbox"]:disabled ~ .checkmark {
+    background-color: #f7fafc;
+    border-color: #cbd5e0;
+    cursor: not-allowed;
+}
+
+.custom-checkbox input[type="checkbox"]:disabled:checked ~ .checkmark {
+    background-color: #cbd5e0;
+    border-color: #cbd5e0;
+}
+
+.custom-checkbox input[type="checkbox"]:disabled ~ .checkbox-label {
+    color: #a0aec0;
+    cursor: not-allowed;
+}
+
+.custom-checkbox input[type="checkbox"]:disabled:hover ~ .checkmark {
+    border-color: #cbd5e0;
+    box-shadow: none;
+}
+
+/* Centered checkbox container */
+.checkbox-container-centered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 0;
+}
+
+.checkbox-row-centered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    padding: 8px 0;
+}
+
 /* Responsive checkbox for smaller screens */
 @media (max-width: 768px) {
     .custom-checkbox {
@@ -1333,6 +1372,192 @@ div.row.device-app-settings-wrapper{
         width: 5px;
         height: 9px;
     }
+
+    .checkbox-row-centered {
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+    }
+
+    .checkbox-container-centered {
+        justify-content: center;
+    }
+
+    /* Upload button mobile responsiveness */
+    .btn-upload {
+        padding: 10px 16px !important;
+        font-size: 13px !important;
+        min-height: 38px !important;
+    }
+
+    .file-selected-info {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .file-name {
+        margin-right: 0;
+        word-break: break-word;
+    }
+
+    .btn-secondary.btn-sm {
+        align-self: flex-end;
+        min-height: 28px !important;
+        padding: 4px 8px !important;
+        font-size: 11px !important;
+    }
+}
+
+/* Simple Upload Button Styling - Same as other buttons */
+.btn-upload {
+    background: #2d3748 !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 8px !important;
+    padding: 12px 24px !important;
+    font-size: 14px !important;
+    font-family: 'Poppins', sans-serif !important;
+    font-weight: 500 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    transition: all 0.2s ease !important;
+    cursor: pointer !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-height: 42px !important;
+    text-decoration: none !important;
+    text-shadow: none !important;
+    background-image: none !important;
+    border-color: transparent !important;
+    box-shadow: none !important;
+}
+
+.btn-upload:hover,
+.btn-upload:focus,
+.btn-upload:active {
+    background: #1a202c !important;
+    color: white !important;
+    border-color: transparent !important;
+    text-decoration: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    transform: none !important;
+}
+
+.btn-upload.full-width {
+    width: 100% !important;
+}
+
+/* Upload button disabled state */
+.btn-upload:disabled,
+.btn-upload[disabled] {
+    background: #cbd5e0 !important;
+    color: #a0aec0 !important;
+    cursor: not-allowed !important;
+    opacity: 1 !important;
+}
+
+.btn-upload:disabled:hover,
+.btn-upload[disabled]:hover {
+    background: #cbd5e0 !important;
+    color: #a0aec0 !important;
+}
+
+/* Remove Bootstrap button styles completely */
+.btn-upload.btn-default {
+    background-color: transparent !important;
+    background-image: none !important;
+    border-color: transparent !important;
+    color: white !important;
+}
+
+.btn-upload.btn-default:hover,
+.btn-upload.btn-default:focus,
+.btn-upload.btn-default:active,
+.btn-upload.btn-default.active {
+    background-color: transparent !important;
+    background-image: none !important;
+    border-color: transparent !important;
+    color: white !important;
+}
+
+/* File Selected Info Styling */
+.file-selected-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #f8fafc;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-top: 8px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.file-name {
+    color: #2d3748;
+    font-weight: 500;
+    font-size: 14px;
+    flex: 1;
+    margin-right: 12px;
+    word-break: break-all;
+}
+
+.btn-secondary {
+    background: #6b7280 !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 6px !important;
+    padding: 6px 12px !important;
+    font-size: 12px !important;
+    font-family: 'Poppins', sans-serif !important;
+    font-weight: 500 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.3px !important;
+    transition: all 0.2s ease !important;
+    cursor: pointer !important;
+}
+
+.btn-secondary:hover {
+    background: #4b5563 !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 2px 8px rgba(107, 114, 128, 0.3) !important;
+    color: white !important;
+}
+
+.btn-secondary:focus {
+    background: #4b5563 !important;
+    outline: none !important;
+    box-shadow: 0 0 0 2px rgba(107, 114, 128, 0.2) !important;
+    color: white !important;
+}
+
+.btn-sm {
+    min-height: 32px !important;
+    padding: 6px 12px !important;
+    font-size: 12px !important;
+}
+
+/* Success state for file upload */
+.file-selected-info.success {
+    border-color: #10b981;
+    background: #ecfdf5;
+}
+
+.file-selected-info.success .file-name {
+    color: #065f46;
+}
+
+/* Error state for file upload */
+.file-selected-info.error {
+    border-color: #ef4444;
+    background: #fef2f2;
+}
+
+.file-selected-info.error .file-name {
+    color: #991b1b;
 }
 
 /* Vertical centering for collapse control */
@@ -1370,3 +1595,185 @@ div.row.device-app-settings-wrapper{
 .collapse-control-icon:hover {
     color: #4299e1;
 }
+
+/* Modal Upload Button Enhancement */
+.modal .btn-upload.btn-default.full-width {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    background: #2d3748 !important;
+    color: white !important;
+    border: 2px solid #2d3748 !important;
+    border-radius: 8px !important;
+    padding: 14px 24px !important;
+    font-family: 'Poppins', sans-serif !important;
+    font-weight: 500 !important;
+    font-size: 14px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    transition: all 0.2s ease !important;
+    cursor: pointer !important;
+    min-height: 48px !important;
+    box-shadow: 0 2px 4px rgba(45, 55, 72, 0.1) !important;
+}
+
+.modal .btn-upload.btn-default.full-width:hover,
+.modal .btn-upload.btn-default.full-width:focus {
+    background: #1a202c !important;
+    border-color: #1a202c !important;
+    color: white !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 12px rgba(45, 55, 72, 0.25) !important;
+}
+
+.modal .btn-upload.btn-default.full-width:active {
+    background: #0d1015 !important;
+    border-color: #0d1015 !important;
+    transform: translateY(0) !important;
+    box-shadow: 0 2px 4px rgba(45, 55, 72, 0.2) !important;
+}
+
+.modal .btn-upload.btn-default.full-width:disabled,
+.modal .btn-upload.btn-default.full-width[disabled] {
+    background: #e2e8f0 !important;
+    border-color: #e2e8f0 !important;
+    color: #a0aec0 !important;
+    cursor: not-allowed !important;
+    transform: none !important;
+    box-shadow: none !important;
+    opacity: 1 !important;
+}
+
+/* Add upload icon styling */
+.modal .btn-upload.btn-default.full-width::before {
+    content: '📁';
+    font-size: 16px;
+    margin-right: 8px;
+}
+
+/* File display area styling for modal */
+.modal .form-group span[ng-if*="file.path"] {
+    display: inline-flex;
+    align-items: center;
+    background: #f7fafc;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    color: #2d3748;
+    margin-bottom: 12px;
+    width: 100%;
+    word-break: break-all;
+}
+
+.modal .form-group span[ng-if*="file.path"]::before {
+    content: '✓';
+    color: #10b981;
+    font-weight: bold;
+    margin-right: 8px;
+    font-size: 16px;
+}
+
+/* Cleanup button styling in modal */
+.modal .btn[ng-click="clearFile()"] {
+    background: #6b7280 !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 6px !important;
+    padding: 8px 16px !important;
+    font-family: 'Poppins', sans-serif !important;
+    font-weight: 500 !important;
+    font-size: 12px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.3px !important;
+    transition: all 0.2s ease !important;
+    cursor: pointer !important;
+    margin-left: 12px !important;
+}
+
+.modal .btn[ng-click="clearFile()"]:hover {
+    background: #4b5563 !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 2px 8px rgba(107, 114, 128, 0.3) !important;
+}
+
+/* Custom Upload Button Styling */
+.btn-upload-custom,
+div.btn-upload-custom {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    background: #2d3748 !important;
+    color: white !important;
+    border: 2px solid #2d3748 !important;
+    border-radius: 8px !important;
+    padding: 14px 24px !important;
+    font-family: 'Poppins', sans-serif !important;
+    font-weight: 500 !important;
+    font-size: 14px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    transition: all 0.2s ease !important;
+    cursor: pointer !important;
+    min-height: 48px !important;
+    box-shadow: 0 2px 4px rgba(45, 55, 72, 0.1) !important;
+    width: 100% !important;
+}
+
+.btn-upload-custom:hover,
+.btn-upload-custom:focus,
+div.btn-upload-custom:hover,
+div.btn-upload-custom:focus {
+    background: #1a202c !important;
+    border-color: #1a202c !important;
+    color: white !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 12px rgba(45, 55, 72, 0.25) !important;
+    text-decoration: none !important;
+    outline: none !important;
+}
+
+.btn-upload-custom:active,
+div.btn-upload-custom:active {
+    background: #0d1015 !important;
+    border-color: #0d1015 !important;
+    transform: translateY(0) !important;
+    box-shadow: 0 2px 4px rgba(45, 55, 72, 0.2) !important;
+}
+
+.btn-upload-custom:disabled,
+.btn-upload-custom[disabled],
+div.btn-upload-custom:disabled,
+div.btn-upload-custom[disabled] {
+    background: #e2e8f0 !important;
+    border-color: #e2e8f0 !important;
+    color: #a0aec0 !important;
+    cursor: not-allowed !important;
+    transform: none !important;
+    box-shadow: none !important;
+    opacity: 1 !important;
+}
+
+.btn-upload-custom:disabled:hover,
+.btn-upload-custom[disabled]:hover,
+div.btn-upload-custom:disabled:hover,
+div.btn-upload-custom[disabled]:hover {
+    background: #e2e8f0 !important;
+    border-color: #e2e8f0 !important;
+    color: #a0aec0 !important;
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+/* Add upload icon to custom button */
+.btn-upload-custom::before,
+div.btn-upload-custom::before {
+    content: '📁';
+    font-size: 16px;
+    margin-right: 8px;
+}
+

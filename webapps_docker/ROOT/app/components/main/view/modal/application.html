@@ -96,26 +96,30 @@
         </div>
 
         <div class='form-group' ng-if="application.type === 'app'">
-            <label class='col-sm-4 control-label' for="applicationSystem" localized>form.application.system</label>
-            <div class='col-sm-2'>
-                <input localized-title="form.application.system.title" ng-model='application.system' type='checkbox'
-                       class='form-control' id="applicationSystem"/>
+            <div class='col-sm-12 checkbox-container-centered'>
+                <label for="applicationSystem" class="custom-checkbox">
+                    <input localized-title="form.application.system.title" ng-model='application.system' type='checkbox' id="applicationSystem"/>
+                    <span class="checkmark"></span>
+                    <span class="checkbox-label" localized>form.application.system</span>
+                </label>
             </div>
         </div>
 
         <div class='form-group' ng-if="application.type === 'app'">
-            <label class='col-sm-4 control-label' for="applicationRunAfterInstall"
-                   localized>form.application.run.after.install</label>
-            <div class='col-sm-2'>
-                <input localized-title="form.application.run.after.install.title" ng-model='application.runAfterInstall'
-                       ng-disabled="application.system" type='checkbox' class='form-control' id="applicationRunAfterInstall"/>
-            </div>
+            <div class='col-sm-12 checkbox-row-centered'>
+                <label for="applicationRunAfterInstall" class="custom-checkbox">
+                    <input localized-title="form.application.run.after.install.title" ng-model='application.runAfterInstall'
+                           ng-disabled="application.system" type='checkbox' id="applicationRunAfterInstall"/>
+                    <span class="checkmark"></span>
+                    <span class="checkbox-label" localized>form.application.run.after.install</span>
+                </label>
 
-            <label class='col-sm-4 control-label' for="applicationRunAtBoot"
-                   localized>form.application.run.at.boot</label>
-            <div class='col-sm-2'>
-                <input localized-title="form.application.run.at.boot.title" ng-model='application.runAtBoot'
-                       ng-disabled="application.system" type='checkbox' class='form-control' id="applicationRunAtBoot"/>
+                <label for="applicationRunAtBoot" class="custom-checkbox">
+                    <input localized-title="form.application.run.at.boot.title" ng-model='application.runAtBoot'
+                           ng-disabled="application.system" type='checkbox' id="applicationRunAtBoot"/>
+                    <span class="checkmark"></span>
+                    <span class="checkbox-label" localized>form.application.run.at.boot</span>
+                </label>
             </div>
         </div>
 
@@ -152,40 +156,45 @@
         <div class='form-group' ng-if="isNewApp && application.type === 'app'">
             <label class='col-sm-4 control-label' localized>form.application.file</label>
             <div class='col-sm-8'>
-                <div class="btn btn-default full-width btn-upload" ng-if="!file.path"
+                <!-- Original upload button with custom styling -->
+                <div class="btn full-width" ng-if="!file.path"
                      file-input-disabler input-disabled="{{application.system}}"
                      upload-button
                      url="rest/private/web-ui-files"
                      on-upload="onStartedUpload(files)"
                      on-progress="onUploadProgress(progress)"
-                     on-success="fileUploaded(response)"></div>
+                     on-success="fileUploaded(response)">
+                </div>
+
                 <span ng-if="file.path && !invalidFile">{{fileName}}</span>
                 <button class="btn btn-default" ng-if="file.path" ng-click="clearFile()" localized>button.cleanup</button>
                 <div ng-if="availableSpace" class="field-hint" style="margin-bottom: 0">{{availableSpace}}</div>
             </div>
         </div>
 
+
         <div class='form-group'>
-            <label class='col-sm-4 control-label' for="showLabelBox" localized>form.application.showLabel</label>
-            <div class='col-sm-2'>
-                <input localized-title="form.application.showLabel.title" ng-model='application.showIcon'
-                       type='checkbox' class='form-control' id="showLabelBox"/>
-            </div>
+            <div class='col-sm-12 checkbox-row-centered'>
+                <label for="showLabelBox" class="custom-checkbox">
+                    <input localized-title="form.application.showLabel.title" ng-model='application.showIcon'
+                           type='checkbox' id="showLabelBox"/>
+                    <span class="checkmark"></span>
+                    <span class="checkbox-label" localized>form.application.showLabel</span>
+                </label>
 
-            <div ng-if="application.type === 'app' && application.autoUpdateDisplayed">
-                <label class='col-sm-4 control-label' for="autoUpdateBox" localized>form.application.auto.update</label>
-                <div class='col-sm-2'>
+                <label for="autoUpdateBox" class="custom-checkbox" ng-if="application.type === 'app' && application.autoUpdateDisplayed">
                     <input localized-title="form.application.auto.update.title" ng-model='application.autoUpdate'
-                           type='checkbox' class='form-control' id="autoUpdateBox"/>
-                </div>
-            </div>
+                           type='checkbox' id="autoUpdateBox"/>
+                    <span class="checkmark"></span>
+                    <span class="checkbox-label" localized>form.application.auto.update</span>
+                </label>
 
-            <div ng-if="application.type === 'web'">
-                <label class='col-sm-4 control-label' for="useKioskBox" localized>form.application.use.kiosk</label>
-                <div class='col-sm-2'>
+                <label for="useKioskBox" class="custom-checkbox" ng-if="application.type === 'web'">
                     <input localized-title="form.application.use.kiosk.title" ng-model='application.useKiosk'
-                           type='checkbox' class='form-control' id="useKioskBox"/>
-                </div>
+                           type='checkbox' id="useKioskBox"/>
+                    <span class="checkmark"></span>
+                    <span class="checkbox-label" localized>form.application.use.kiosk</span>
+                </label>
             </div>
 
         </div>

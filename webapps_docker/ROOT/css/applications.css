@@ -62,12 +62,14 @@
     gap: 8px;
 }
 
-.applications-add-btn:hover {
+.applications-add-btn:hover,
+.applications-add-btn:focus {
     background: #1a202c;
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(45, 55, 72, 0.3);
     color: white;
 }
+
 
 /* Checkbox Container */
 .applications-checkbox-container {
@@ -465,4 +467,93 @@
         width: 4px;
         height: 8px;
     }
+}
+
+/* File input styling */
+input[type="file"] {
+    display: block;
+    width: 100%;
+    padding: 14px 24px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: white;
+    background: #2d3748;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    min-height: 48px;
+    box-shadow: 0 2px 4px rgba(45, 55, 72, 0.1);
+}
+
+input[type="file"]:hover {
+    background: #1a202c;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(45, 55, 72, 0.25);
+}
+
+input[type="file"]:focus {
+    outline: none;
+    background: #1a202c;
+    box-shadow: 0 0 0 3px rgba(45, 55, 72, 0.2);
+}
+
+input[type="file"]:disabled {
+    background: #e2e8f0;
+    color: #a0aec0;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+    opacity: 1;
+}
+
+/* Custom file input button text */
+input[type="file"]::file-selector-button {
+    background: transparent;
+    color: white;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-right: 8px;
+}
+
+input[type="file"]::file-selector-button:hover {
+    background: transparent;
+    color: white;
+    transform: none;
+    box-shadow: none;
+}
+
+/* For webkit browsers */
+input[type="file"]::-webkit-file-upload-button {
+    background: transparent;
+    color: white;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-right: 8px;
+}
+
+input[type="file"]::-webkit-file-upload-button:hover {
+    background: transparent;
+    color: white;
+    transform: none;
+    box-shadow: none;
 }
